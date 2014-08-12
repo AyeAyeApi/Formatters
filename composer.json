@@ -2,7 +2,7 @@
     "name": "gisleburt/formatter",
     "type": "library",
     "description": "A simple but powerful API framework",
-    "homepage": "http://github.com/Gisleburt",
+    "homepage": "http://github.com/Gisleburt/GF_Formatter",
     "minimum-stability": "dev",
     "license" : "GPL-3.0+",
     "authors": [
