@@ -5,7 +5,7 @@
  * @copyright Loft Digital, 2014
  */
 
-namespace Gisleburt\Api;
+namespace Gisleburt\Formatter;
 
 
 class FormatFactory {

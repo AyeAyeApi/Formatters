@@ -5,7 +5,7 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Api;
+namespace Gisleburt\Formatter;
 
 
 abstract class Format {

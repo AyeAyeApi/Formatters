@@ -5,10 +5,10 @@
  * @copyright Loft Digital, 2014
  */
 
-namespace Gisleburt\Api\Formats;
+namespace Gisleburt\Formatter\Formats;
 
 
-use Gisleburt\Api\Format;
+use Gisleburt\Formatter\Format;
 
 class Xml extends Format {
 
