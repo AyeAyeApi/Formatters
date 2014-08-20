@@ -30,7 +30,7 @@ class Php extends Format {
 
     public function getHeader() {
         if($this->callbackName) {
-            return '<?php';
+            return '<?php ';
         }
         return parent::getHeader();
     }
@@ -38,7 +38,7 @@ class Php extends Format {
     public function format($data, $name = null) {
         $serialisedData = serialize($data);
         if($this->callbackName) {
-            $serialisedData = $this->callbackName."(unserialize($serialisedData));";
+            $serialisedData = $this->callbackName."(unserialize('$serialisedData'));";
         }
         return $serialisedData;
     }
