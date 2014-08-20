@@ -1,6 +1,6 @@
 <?php
 /**
- * [Description]
+ * Turn suffix's into Formats
  * @author Daniel Mason
  * @copyright Loft Digital, 2014
  */
