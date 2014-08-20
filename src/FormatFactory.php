@@ -23,16 +23,21 @@ class FormatFactory {
      */
     public function getFormatFor($suffix) {
         if(array_key_exists($suffix, $this->formats)) {
-            if($this->formats[$suffix] instanceof Format) {
-                return $this->formats[$suffix];
+            if(is_object($this->formats[$suffix]) ) {
+                $format = $this->formats[$suffix];
             }
-            if(is_string($this->formats[$suffix]) && class_exists($this->formats[$suffix])) {
+            elseif(is_string($this->formats[$suffix]) && class_exists($this->formats[$suffix])) {
                 $format = new $this->formats[$suffix]();
-                if($format instanceof Format) {
-                    return $format;
-                }
             }
-            throw new \Exception("Format for '$suffix' not a class or Format object");
+            else {
+                throw new \Exception("Format for '$suffix' not a valid class or object");
+            }
+
+            if($format instanceof Format) {
+                return $format;
+            }
+
+            throw new \Exception("Format for '$suffix' not a Format object or class");
         }
         throw new \Exception("Format for '$suffix' not found");
     }
