@@ -33,7 +33,7 @@ class Xml extends Format {
                 $nodeName = 'array';
             }
             else {
-                $nodeName = $this->$defaultNodeName;
+                $nodeName = $this->defaultNodeName;
             }
         }
 
