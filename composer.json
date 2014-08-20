@@ -1,7 +1,7 @@
 {
     "name": "gisleburt/formatter",
     "type": "library",
-    "description": "A simple but powerful API framework",
+    "description": "Serialise PHP objects into other types of object (json, xml, etc)",
     "homepage": "http://github.com/Gisleburt/GF_Formatter",
     "minimum-stability": "dev",
     "license" : "GPL-3.0+",
@@ -17,7 +17,7 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "gisleburt/api-test": "dev-master"
+        "gisleburt/formatter-test": "dev-master"
     },
     "autoload": {
         "psr-4": {
