@@ -12,13 +12,11 @@ use Gisleburt\Formatter\Format;
 
 class Xml extends Format {
 
-    const DEFAULT_NODE_NAME = 'data';
+    protected $contentType = 'application/xml';
 
     protected $numericArrayPrefix = '_';
 
-    public function sendHeaders() {
-        header('Content-Type: application/xml');
-    }
+    protected $defaultNodeName = 'data';
 
     public function getHeader() {
         return '<?xml version="1.0" encoding="UTF-8" ?>';
@@ -35,7 +33,7 @@ class Xml extends Format {
                 $nodeName = 'array';
             }
             else {
-                $nodeName = static::DEFAULT_NODE_NAME;
+                $nodeName = $this->$defaultNodeName;
             }
         }
 

@@ -12,9 +12,7 @@ use Gisleburt\Formatter\Format;
 
 class Json extends Format {
 
-    public function sendHeaders() {
-        header('Content-Type: application/json');
-    }
+    protected $contentType = 'application/json';
 
     public function format($data, $name = null) {
         return json_encode($data);

@@ -10,11 +10,13 @@ namespace Gisleburt\Formatter;
 
 abstract class Format {
 
+    protected $contentType = 'text/plain';
+
     /**
      * Send document headers
      */
-    public function sendHeaders() {
-        return;
+    public function getContentType() {
+        return $this->contentType;
     }
 
     /**

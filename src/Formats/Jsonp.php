@@ -12,7 +12,10 @@ use Gisleburt\Formatter\Format;
 
 class Jsonp extends Format {
 
+    protected $contentType = 'application/javascript';
+
     protected $callbackName;
+
 
     public function __construct($callbackName = null) {
         $this->setCallbackName($callbackName);
@@ -24,10 +27,6 @@ class Jsonp extends Format {
      */
     public function setCallbackName($callbackName) {
         $this->callbackName = $callbackName;
-    }
-
-    public function sendHeaders() {
-        header('Content-Type: application/javascript');
     }
 
     public function format($data, $name = null) {

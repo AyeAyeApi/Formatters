@@ -12,6 +12,8 @@ use Gisleburt\Formatter\Format;
 
 class Php extends Format {
 
+    protected $contentType = 'application/php';
+
     protected $callbackName;
 
     public function __construct($callbackName = null) {
@@ -24,10 +26,6 @@ class Php extends Format {
      */
     public function setCallbackName($callbackName) {
         $this->callbackName = $callbackName;
-    }
-
-    public function sendHeaders() {
-        header('Content-Type: application/php');
     }
 
     public function getHeader() {
