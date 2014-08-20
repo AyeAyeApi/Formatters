@@ -38,27 +38,33 @@ class Xml extends Format {
         }
 
         $xml = "<$nodeName>";
-        foreach($data as $property => $value) {
-            // Clear non-alphanumeric characters
-            $property = preg_replace('/\W/', '', $property);
 
-            // If numeric we'll stick a character in front of it, a bit hack but should be valid
-            if(is_numeric($property)) {
-                $property = $this->numericArrayPrefix.$property;
+        if(is_scalar($data)) {
+            if(is_bool($data)) {
+                $xml = $data ? 'true' : 'false';
             }
+            else{
+                $xml .= htmlspecialchars($data);
+            }
+        }
+        else {
+            if($data instanceof \JsonSerializable) {
+                $xml .= $this->format($data->jsonSerialize());
+            }
+            else {
+                foreach($data as $property => $value) {
+                    // Clear non-alphanumeric characters
+                    $property = preg_replace('/\W/', '', $property);
 
-            if(!is_scalar($value)) {
-                if($value instanceof \JsonSerializable) {
-                    $xml .= $this->format($value->jsonSerialize(), $property);
-                }
-                else {
+                    // If numeric we'll stick a character in front of it, a bit hack but should be valid
+                    if(is_numeric($property)) {
+                        $property = $this->numericArrayPrefix.$property;
+                    }
                     $xml .= $this->format($value, $property);
                 }
             }
-            else {
-                $xml .= "<{$property}>".htmlspecialchars($value)."</{$property}>";
-            }
         }
+
         $xml .= "</$nodeName>";
 
         return $xml;
