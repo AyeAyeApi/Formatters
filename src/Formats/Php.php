@@ -12,12 +12,19 @@ use Gisleburt\Formatter\Format;
 
 class Php extends Format {
 
-    protected $contentType = 'application/php';
+    protected $callbackContentType = 'application/php';
 
     protected $callbackName;
 
     public function __construct($callbackName = null) {
         $this->setCallbackName($callbackName);
+    }
+
+    public function getContentType() {
+        if($this->callbackName) {
+            return $this->callbackContentType;
+        }
+        return parent::getContentType();
     }
 
     /**
