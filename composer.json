@@ -17,11 +17,12 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        "gisleburt/formatter-test": "dev-master"
+        "phpunit/phpunit": "3.7.28"
     },
     "autoload": {
         "psr-4": {
-            "Gisleburt\\Formatter\\": "src/"
+            "Gisleburt\\Formatter\\": "src/",
+			"Gisleburt\\Formatter\\Tests\\": "tests/"
         }
     }
 }
