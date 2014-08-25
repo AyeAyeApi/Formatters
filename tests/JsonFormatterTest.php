@@ -2,7 +2,7 @@
 /**
  * Test the Json Formatter
  * @author Daniel Mason
- * @copyright Loft Digital, 2014
+ * @copyright Daniel Mason, 2014
  */
 
 namespace Gisleburt\Formatter\Tests;

@@ -2,7 +2,7 @@
 /**
  * Formats data as xml
  * @author Daniel Mason
- * @copyright Loft Digital, 2014
+ * @copyright Daniel Mason, 2014
  */
 
 namespace Gisleburt\Formatter\Formats;
