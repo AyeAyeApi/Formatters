@@ -8,9 +8,9 @@
 namespace Gisleburt\Formatter\Formats;
 
 
-use Gisleburt\Formatter\Format;
+use Gisleburt\Formatter\Formatter;
 
-class Xml extends Format {
+class Xml extends Formatter {
 
     protected $contentType = 'application/xml';
 

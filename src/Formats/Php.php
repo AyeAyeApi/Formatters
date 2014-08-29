@@ -8,9 +8,9 @@
 namespace Gisleburt\Formatter\Formats;
 
 
-use Gisleburt\Formatter\Format;
+use Gisleburt\Formatter\Formatter;
 
-class Php extends Format {
+class Php extends Formatter {
 
     protected $callbackContentType = 'application/php';
 

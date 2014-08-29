@@ -8,9 +8,9 @@
 namespace Gisleburt\Formatter\Formats;
 
 
-use Gisleburt\Formatter\Format;
+use Gisleburt\Formatter\Formatter;
 
-class Jsonp extends Format {
+class Jsonp extends Formatter {
 
     protected $contentType = 'application/javascript';
 

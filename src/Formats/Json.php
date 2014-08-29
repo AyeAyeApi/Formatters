@@ -8,9 +8,9 @@
 namespace Gisleburt\Formatter\Formats;
 
 
-use Gisleburt\Formatter\Format;
+use Gisleburt\Formatter\Formatter;
 
-class Json extends Format {
+class Json extends Formatter {
 
     protected $contentType = 'application/json';
 

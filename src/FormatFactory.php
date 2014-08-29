@@ -18,7 +18,7 @@ class FormatFactory {
 
     /**
      * @param $suffix
-     * @return Format
+     * @return Formatter
      * @throws \Exception
      */
     public function getFormatFor($suffix) {
@@ -33,7 +33,7 @@ class FormatFactory {
                 throw new \Exception("Format for '$suffix' not a valid class or object");
             }
 
-            if($format instanceof Format) {
+            if($format instanceof Formatter) {
                 return $format;
             }
 

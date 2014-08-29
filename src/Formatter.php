@@ -8,7 +8,7 @@
 namespace Gisleburt\Formatter;
 
 
-abstract class Format {
+abstract class Formatter {
 
     protected $contentType = 'text/plain';
 
