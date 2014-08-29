@@ -112,7 +112,7 @@ class XmlFormatterTest extends TestCase {
 
     public function testJsonSerializable() {
         $testObject = new JsonSerializableClass();
-        $expectedXml = '<JsonSerializableClass><array><testString>string</testString>true</testBool></array></JsonSerializableClass>';
+        $expectedXml = '<JsonSerializableClass><array><testString>string</testString><testBool>true</testBool></array></JsonSerializableClass>';
 
         $xmlFormatter = new Xml();
         $xml = $xmlFormatter->format($testObject);

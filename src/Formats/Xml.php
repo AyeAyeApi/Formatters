@@ -25,44 +25,16 @@ class Xml extends Formatter {
     public function format($data, $nodeName = null) {
 
         if(!$nodeName) {
-            if(is_object($data)) {
-                $nodeName = preg_replace('/.*\\\/', '', get_class($data));
-                $nodeName = preg_replace('/\W/', '', $nodeName);
-            }
-            elseif(is_array($data)) {
-                $nodeName = 'array';
-            }
-            else {
-                $nodeName = $this->defaultNodeName;
-            }
+            $nodeName = $this->getNodeName($data);
         }
 
         $xml = "<$nodeName>";
 
         if(is_scalar($data)) {
-            if(is_bool($data)) {
-                $xml = $data ? 'true' : 'false';
-            }
-            else{
-                $xml .= htmlspecialchars($data);
-            }
+            $xml .= $this->parseScalarData($data);
         }
         else {
-            if($data instanceof \JsonSerializable) {
-                $xml .= $this->format($data->jsonSerialize());
-            }
-            else {
-                foreach($data as $property => $value) {
-                    // Clear non-alphanumeric characters
-                    $property = preg_replace('/\W/', '', $property);
-
-                    // If numeric we'll stick a character in front of it, a bit hack but should be valid
-                    if(is_numeric($property)) {
-                        $property = $this->numericArrayPrefix.$property;
-                    }
-                    $xml .= $this->format($value, $property);
-                }
-            }
+            $xml .= $this->parseNonScalarData($data);
         }
 
         $xml .= "</$nodeName>";
@@ -70,4 +42,42 @@ class Xml extends Formatter {
         return $xml;
     }
 
-} 
+    protected function getNodeName($data) {
+        if(is_object($data)) {
+            $nodeName = preg_replace('/.*\\\/', '', get_class($data));
+            return preg_replace('/\W/', '', $nodeName);
+        }
+        elseif(is_array($data)) {
+            return 'array';
+        }
+        return $this->defaultNodeName;
+    }
+
+    protected function parseScalarData($data) {
+        if(is_bool($data)) {
+            return $data ? 'true' : 'false';
+        }
+        return htmlspecialchars($data);
+    }
+
+    protected function parseNonScalarData($data) {
+        if($data instanceof \JsonSerializable) {
+            return $this->format($data->jsonSerialize());
+        }
+
+        $xml = '';
+        foreach($data as $property => $value) {
+            // Clear non-alphanumeric characters
+            $property = preg_replace('/\W/', '', $property);
+
+            // If numeric we'll stick a character in front of it, a bit hack but should be valid
+            if(is_numeric($property)) {
+                $property = $this->numericArrayPrefix.$property;
+            }
+            $xml .= $this->format($value, $property);
+        }
+        return $xml;
+
+    }
+
+}
