@@ -1,3 +1,19 @@
+setup:
+  composer:
+    action: "install"
+
 test:
   php_unit:
     coverage: "reports/html"
+  php_loc:
+    directory: "src"
+  php_mess_detector:
+    path: "src"
+    rules:
+      - "codesize"
+      - "design"
+      - "cleancode"
+      - "naming"
+      - "unusedcode"
+    allow_failures: true
+    zero_config: true
