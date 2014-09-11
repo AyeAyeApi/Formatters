@@ -10,14 +10,16 @@ namespace Gisleburt\Formatter\Formats;
 
 use Gisleburt\Formatter\Formatter;
 
-class Jsonp extends Formatter {
+class Jsonp extends Formatter
+{
 
     protected $contentType = 'application/javascript';
 
     protected $callbackName;
 
 
-    public function __construct($callbackName = null) {
+    public function __construct($callbackName = null)
+    {
         $this->setCallbackName($callbackName);
     }
 
@@ -25,13 +27,15 @@ class Jsonp extends Formatter {
      * Set the name of the javascript function that will be called
      * @param $callbackName
      */
-    public function setCallbackName($callbackName) {
+    public function setCallbackName($callbackName)
+    {
         $this->callbackName = $callbackName;
     }
 
-    public function format($data, $name = null) {
+    public function format($data, $name = null)
+    {
         $callbackName = $this->callbackName;
-        if(!$callbackName) {
+        if (!$callbackName) {
             $callbackName = $name ? $name : 'callback';
         }
         $json = json_encode($data);

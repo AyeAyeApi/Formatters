@@ -8,11 +8,13 @@
 namespace Gisleburt\Formatter;
 
 
-class FormatFactory {
+class FormatFactory
+{
 
     protected $formats;
 
-    public function __construct(array $formats) {
+    public function __construct(array $formats)
+    {
         $this->formats = $formats;
     }
 
@@ -21,19 +23,18 @@ class FormatFactory {
      * @return Formatter
      * @throws \Exception
      */
-    public function getFormatFor($suffix) {
-        if(array_key_exists($suffix, $this->formats)) {
-            if(is_object($this->formats[$suffix]) ) {
+    public function getFormatFor($suffix)
+    {
+        if (array_key_exists($suffix, $this->formats)) {
+            if (is_object($this->formats[$suffix])) {
                 $format = $this->formats[$suffix];
-            }
-            elseif(is_string($this->formats[$suffix]) && class_exists($this->formats[$suffix])) {
+            } elseif (is_string($this->formats[$suffix]) && class_exists($this->formats[$suffix])) {
                 $format = new $this->formats[$suffix]();
-            }
-            else {
+            } else {
                 throw new \Exception("Format for '$suffix' not a valid class or object");
             }
 
-            if($format instanceof Formatter) {
+            if ($format instanceof Formatter) {
                 return $format;
             }
 

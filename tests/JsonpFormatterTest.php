@@ -9,9 +9,11 @@ namespace Gisleburt\Formatter\Tests;
 
 use Gisleburt\Formatter\Formats\Jsonp;
 
-class JsonpFormatterTest extends TestCase {
+class JsonpFormatterTest extends TestCase
+{
 
-    public function testContentType() {
+    public function testContentType()
+    {
         $jsonpFormatter = new Jsonp();
         $contentType = $jsonpFormatter->getContentType();
         $this->assertTrue(
@@ -20,7 +22,8 @@ class JsonpFormatterTest extends TestCase {
         );
     }
 
-    public function testHeader() {
+    public function testHeader()
+    {
         $jsonpFormatter = new Jsonp();
         $this->assertTrue(
             $jsonpFormatter->getHeader() === '',
@@ -28,7 +31,8 @@ class JsonpFormatterTest extends TestCase {
         );
     }
 
-    public function testFooter() {
+    public function testFooter()
+    {
         $jsonpFormatter = new Jsonp();
         $this->assertTrue(
             $jsonpFormatter->getFooter() === '',
@@ -36,7 +40,8 @@ class JsonpFormatterTest extends TestCase {
         );
     }
 
-    public function testSimpleObjectJsonp() {
+    public function testSimpleObjectJsonp()
+    {
         $blankObject = new \stdClass();
         $jsonpFormatter = new Jsonp();
         $this->assertTrue(
@@ -50,7 +55,8 @@ class JsonpFormatterTest extends TestCase {
         );
     }
 
-    public function testSimpleArrayJsonp() {
+    public function testSimpleArrayJsonp()
+    {
         $blankArray = [];
         $jsonpFormatter = new Jsonp();
         $this->assertTrue(
@@ -64,7 +70,8 @@ class JsonpFormatterTest extends TestCase {
         );
     }
 
-    public function testComplexObject() {
+    public function testComplexObject()
+    {
         $complexObject = (object)[
             'childObject' => (object)[
                     'property' => 'value'

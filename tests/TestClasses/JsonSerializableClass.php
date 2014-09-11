@@ -8,9 +8,11 @@
 namespace Gisleburt\Formatter\Tests\TestClasses;
 
 
-class JsonSerializableClass implements \JsonSerializable {
+class JsonSerializableClass implements \JsonSerializable
+{
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'testString' => 'string',
             'testBool' => true,

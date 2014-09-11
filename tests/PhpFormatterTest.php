@@ -9,59 +9,64 @@ namespace Gisleburt\Formatter\Tests;
 
 use Gisleburt\Formatter\Formats\Php;
 
-class PhpFormatterTest extends TestCase {
+class PhpFormatterTest extends TestCase
+{
 
-    public function testContentType() {
+    public function testContentType()
+    {
         $phpFormatter = new Php();
         $contentType = $phpFormatter->getContentType();
         $this->assertTrue(
             $contentType === 'text/plain',
-            'Incorrect content type for php serialized string'.PHP_EOL.$contentType
+            'Incorrect content type for php serialized string' . PHP_EOL . $contentType
         );
 
         $phpFormatter->setCallbackName('callback');
         $contentType = $phpFormatter->getContentType();
         $this->assertTrue(
             $contentType === 'application/php',
-            'Incorrect content type for php using callback: '.PHP_EOL.$contentType
+            'Incorrect content type for php using callback: ' . PHP_EOL . $contentType
         );
     }
 
-    public function testHeader() {
+    public function testHeader()
+    {
         $phpFormatter = new Php();
 
         $header = $phpFormatter->getHeader();
         $this->assertTrue(
             $header === '',
-            'Php header was not an empty string: '.PHP_EOL.$header
+            'Php header was not an empty string: ' . PHP_EOL . $header
         );
 
         $phpFormatter->setCallbackName('callback');
         $header = $phpFormatter->getHeader();
         $this->assertTrue(
             $header === '<?php ',
-            'Php header did not include open tag using callback: '.PHP_EOL.$header
+            'Php header did not include open tag using callback: ' . PHP_EOL . $header
         );
     }
 
-    public function testFooter() {
+    public function testFooter()
+    {
         $phpFormatter = new Php();
 
         $footer = $phpFormatter->getFooter();
         $this->assertTrue(
             $footer === '',
-            'Php footer was not an empty string: '.PHP_EOL.$footer
+            'Php footer was not an empty string: ' . PHP_EOL . $footer
         );
 
         $phpFormatter->setCallbackName('callback');
         $footer = $phpFormatter->getFooter();
         $this->assertTrue(
             $footer === '',
-            'Php footer was not an empty string using callback: '.PHP_EOL.$footer
+            'Php footer was not an empty string using callback: ' . PHP_EOL . $footer
         );
     }
 
-    public function testSimpleObjectPhp() {
+    public function testSimpleObjectPhp()
+    {
         $blankObject = new \stdClass();
         $phpFormatter = new Php();
 
@@ -69,18 +74,19 @@ class PhpFormatterTest extends TestCase {
         $php = $phpFormatter->format($blankObject);
         $this->assertTrue(
             $php === $expectedPhp,
-            'Php did not contain an empty object: '.PHP_EOL.$php
+            'Php did not contain an empty object: ' . PHP_EOL . $php
         );
 
         $phpFormatter->setCallbackName('callback');
         $php = $phpFormatter->format($blankObject);
         $this->assertTrue(
             $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain an empty object using callback: '.PHP_EOL.$php
+            'Php did not contain an empty object using callback: ' . PHP_EOL . $php
         );
     }
 
-    public function testSimpleArrayPhp() {
+    public function testSimpleArrayPhp()
+    {
         $blankArray = [];
         $phpFormatter = new Php();
 
@@ -88,18 +94,19 @@ class PhpFormatterTest extends TestCase {
         $php = $phpFormatter->format($blankArray);
         $this->assertTrue(
             $php === $expectedPhp,
-            'Php did not contain an empty array: '.PHP_EOL.$php
+            'Php did not contain an empty array: ' . PHP_EOL . $php
         );
 
         $phpFormatter->setCallbackName('callback');
         $php = $phpFormatter->format($blankArray);
         $this->assertTrue(
             $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain an empty object using callback: '.PHP_EOL.$php
+            'Php did not contain an empty object using callback: ' . PHP_EOL . $php
         );
     }
 
-    public function testComplexObject() {
+    public function testComplexObject()
+    {
         $complexObject = (object)[
             'childObject' => (object)[
                     'property' => 'value'
@@ -116,14 +123,14 @@ class PhpFormatterTest extends TestCase {
         $php = $phpFormatter->format($complexObject);
         $this->assertTrue(
             $php === $expectedPhp,
-            'Php did not contain the complex object: '.PHP_EOL.$php
+            'Php did not contain the complex object: ' . PHP_EOL . $php
         );
 
         $phpFormatter->setCallbackName('callback');
         $php = $phpFormatter->format($complexObject);
         $this->assertTrue(
             $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain the complex object using callback: '.PHP_EOL.$php
+            'Php did not contain the complex object using callback: ' . PHP_EOL . $php
         );
 
     }

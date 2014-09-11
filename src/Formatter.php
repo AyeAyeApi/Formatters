@@ -8,14 +8,16 @@
 namespace Gisleburt\Formatter;
 
 
-abstract class Formatter {
+abstract class Formatter
+{
 
     protected $contentType = 'text/plain';
 
     /**
      * Send document headers
      */
-    public function getContentType() {
+    public function getContentType()
+    {
         return $this->contentType;
     }
 
@@ -31,7 +33,8 @@ abstract class Formatter {
      * Get anything that must come before any data
      * @return string
      */
-    public function getHeader() {
+    public function getHeader()
+    {
         return '';
     }
 
@@ -39,7 +42,8 @@ abstract class Formatter {
      * Get anything that must come after data
      * @return string
      */
-    public function getFooter() {
+    public function getFooter()
+    {
         return '';
     }
 

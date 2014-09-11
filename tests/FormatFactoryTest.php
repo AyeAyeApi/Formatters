@@ -11,12 +11,14 @@ namespace Gisleburt\Formatter\Tests;
 use Gisleburt\Formatter\FormatFactory;
 use Gisleburt\Formatter\Formats\Json;
 
-class FormatFactoryTest extends TestCase {
+class FormatFactoryTest extends TestCase
+{
 
     /**
      * Test that the factory can return objects previously given to it
      */
-    public function testFactoryObjects() {
+    public function testFactoryObjects()
+    {
         $factory = new FormatFactory([
             'json' => new Json(),
         ]);
@@ -26,7 +28,8 @@ class FormatFactoryTest extends TestCase {
     /**
      * Test that the factory can return objects based on class names as strings
      */
-    public function testFactoryStrings() {
+    public function testFactoryStrings()
+    {
         $factory = new FormatFactory([
             'json' => '\Gisleburt\Formatter\Formats\Json',
         ]);
@@ -37,7 +40,8 @@ class FormatFactoryTest extends TestCase {
      * @expectedException        \Exception
      * @expectedExceptionMessage Format for 'json' not a Format object or class
      */
-    public function testNonFormatClassException() {
+    public function testNonFormatClassException()
+    {
         $factory = new FormatFactory([
             'json' => new \stdClass(),
         ]);
@@ -48,7 +52,8 @@ class FormatFactoryTest extends TestCase {
      * @expectedException        \Exception
      * @expectedExceptionMessage Format for 'json' not a valid class or object
      */
-    public function testInvalidClassException() {
+    public function testInvalidClassException()
+    {
         $factory = new FormatFactory([
             'json' => 'this-is-an-invalid-class-name',
         ]);
@@ -59,7 +64,8 @@ class FormatFactoryTest extends TestCase {
      * @expectedException        \Exception
      * @expectedExceptionMessage Format for 'json' not found
      */
-    public function testInvalidExtensionException() {
+    public function testInvalidExtensionException()
+    {
         $factory = new FormatFactory([]);
         $factory->getFormatFor('json');
     }

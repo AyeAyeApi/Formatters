@@ -9,9 +9,11 @@ namespace Gisleburt\Formatter\Tests;
 
 use Gisleburt\Formatter\Formats\Json;
 
-class JsonFormatterTest extends TestCase {
+class JsonFormatterTest extends TestCase
+{
 
-    public function testContentType() {
+    public function testContentType()
+    {
         $jsonFormatter = new Json();
         $contentType = $jsonFormatter->getContentType();
         $this->assertTrue(
@@ -20,7 +22,8 @@ class JsonFormatterTest extends TestCase {
         );
     }
 
-    public function testHeader() {
+    public function testHeader()
+    {
         $jsonFormatter = new Json();
         $this->assertTrue(
             $jsonFormatter->getHeader() === '',
@@ -28,7 +31,8 @@ class JsonFormatterTest extends TestCase {
         );
     }
 
-    public function testFooter() {
+    public function testFooter()
+    {
         $jsonFormatter = new Json();
         $this->assertTrue(
             $jsonFormatter->getFooter() === '',
@@ -36,7 +40,8 @@ class JsonFormatterTest extends TestCase {
         );
     }
 
-    public function testSimpleObjectJson() {
+    public function testSimpleObjectJson()
+    {
         $blankObject = new \stdClass();
         $jsonFormatter = new Json();
         $this->assertTrue(
@@ -45,7 +50,8 @@ class JsonFormatterTest extends TestCase {
         );
     }
 
-    public function testSimpleArrayJson() {
+    public function testSimpleArrayJson()
+    {
         $blankArray = [];
         $jsonFormatter = new Json();
         $this->assertTrue(
@@ -54,7 +60,8 @@ class JsonFormatterTest extends TestCase {
         );
     }
 
-    public function testComplexObject() {
+    public function testComplexObject()
+    {
         $complexObject = (object)[
             'childObject' => (object)[
                     'property' => 'value'
