@@ -1,14 +1,14 @@
 {
-    "name": "gisleburt/formatter",
+    "name": "ayeaye/formatters",
     "type": "library",
     "description": "Serialise PHP objects into other types of object (json, xml, etc)",
-    "homepage": "http://github.com/Gisleburt/GF_Formatter",
+    "homepage": "http://ayeayeapi.com",
     "minimum-stability": "dev",
     "license" : "GPL-3.0+",
     "authors": [
         {
             "name": "Daniel Mason",
-            "email": "daniel@danielmason.com",
+            "email": "daniel@ayeayeapi.com",
             "homepage": "http://danielmason.com",
             "role": "Lead developer"
         }
