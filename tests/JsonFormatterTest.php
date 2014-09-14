@@ -5,9 +5,9 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Tests;
+namespace AyeAye\Formatter\Tests;
 
-use Gisleburt\Formatter\Formats\Json;
+use AyeAye\Formatter\Formats\Json;
 
 class JsonFormatterTest extends TestCase
 {

@@ -5,10 +5,10 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Tests;
+namespace AyeAye\Formatter\Tests;
 
-use Gisleburt\Formatter\Formats\Xml;
-use Gisleburt\Formatter\Tests\TestClasses\JsonSerializableClass;
+use AyeAye\Formatter\Formats\Xml;
+use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 class XmlFormatterTest extends TestCase
 {

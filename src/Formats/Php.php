@@ -5,10 +5,10 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Formats;
+namespace AyeAye\Formatter\Formats;
 
 
-use Gisleburt\Formatter\Formatter;
+use AyeAye\Formatter\Formatter;
 
 class Php extends Formatter
 {

@@ -5,7 +5,7 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Tests\TestClasses;
+namespace AyeAye\Formatter\Tests\TestClasses;
 
 
 class JsonSerializableClass implements \JsonSerializable

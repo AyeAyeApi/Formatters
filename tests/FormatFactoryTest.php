@@ -5,11 +5,11 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Tests;
+namespace AyeAye\Formatter\Tests;
 
 
-use Gisleburt\Formatter\FormatFactory;
-use Gisleburt\Formatter\Formats\Json;
+use AyeAye\Formatter\FormatFactory;
+use AyeAye\Formatter\Formats\Json;
 
 class FormatFactoryTest extends TestCase
 {
@@ -31,7 +31,7 @@ class FormatFactoryTest extends TestCase
     public function testFactoryStrings()
     {
         $factory = new FormatFactory([
-            'json' => '\Gisleburt\Formatter\Formats\Json',
+            'json' => '\AyeAye\Formatter\Formats\Json',
         ]);
         $this->assertTrue($factory->getFormatFor('json') instanceof Json, 'Formatter for json not returned correctly');
     }

@@ -5,7 +5,7 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter;
+namespace AyeAye\Formatter;
 
 
 abstract class Formatter

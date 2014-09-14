@@ -21,8 +21,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Gisleburt\\Formatter\\": "src/",
-			"Gisleburt\\Formatter\\Tests\\": "tests/"
+            "AyeAye\\Formatter\\": "src/",
+			"AyeAye\\Formatter\\Tests\\": "tests/"
         }
     }
 }

@@ -5,9 +5,9 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace Gisleburt\Formatter\Tests;
+namespace AyeAye\Formatter\Tests;
 
-use Gisleburt\Formatter\Formats\Jsonp;
+use AyeAye\Formatter\Formats\Jsonp;
 
 class JsonpFormatterTest extends TestCase
 {
