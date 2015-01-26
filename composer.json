@@ -17,12 +17,27 @@
         "php": ">=5.4.0"
     },
     "require-dev": {
-        
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "@stable",
+        "phploc/phploc": "@stable",
+        "pdepend/pdepend": "@stable",
+        "phpmd/phpmd": "@stable",
+        "sebastian/phpcpd": "@stable"
     },
     "autoload": {
         "psr-4": {
-            "AyeAye\\Formatter\\": "src/",
+            "AyeAye\\Formatter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "AyeAye\\Formatter\\Tests\\": "tests/"
         }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "process-timeout":      600,
+        "preferred-install":    "dist",
+        "github-protocols":     ["https"]
     }
 }
