@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter;
 
-
 abstract class Formatter
 {
 
@@ -46,5 +45,4 @@ abstract class Formatter
     {
         return '';
     }
-
-} 
+}

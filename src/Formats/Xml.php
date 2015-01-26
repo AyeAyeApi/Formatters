@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Formats;
 
-
 use AyeAye\Formatter\Formatter;
 
 class Xml extends Formatter
@@ -83,5 +82,4 @@ class Xml extends Formatter
         return $xml;
 
     }
-
 }

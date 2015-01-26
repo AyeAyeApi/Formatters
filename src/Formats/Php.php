@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Formats;
 
-
 use AyeAye\Formatter\Formatter;
 
 class Php extends Formatter
@@ -55,5 +54,4 @@ class Php extends Formatter
         }
         return $serialisedData;
     }
-
-} 
+}

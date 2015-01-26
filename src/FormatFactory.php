@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter;
 
-
 class FormatFactory
 {
 
@@ -42,5 +41,4 @@ class FormatFactory
         }
         throw new \Exception("Format for '$suffix' not found");
     }
-
 }

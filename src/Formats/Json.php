@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Formats;
 
-
 use AyeAye\Formatter\Formatter;
 
 class Json extends Formatter
@@ -19,5 +18,4 @@ class Json extends Formatter
     {
         return json_encode($data);
     }
-
-} 
+}

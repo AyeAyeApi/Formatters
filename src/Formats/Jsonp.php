@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Formats;
 
-
 use AyeAye\Formatter\Formatter;
 
 class Jsonp extends Formatter
@@ -41,5 +40,4 @@ class Jsonp extends Formatter
         $json = json_encode($data);
         return "$callbackName($json);";
     }
-
-} 
+}
