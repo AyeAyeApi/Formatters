@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Tests;
 
-
 use AyeAye\Formatter\FormatFactory;
 use AyeAye\Formatter\Formats\Json;
 
@@ -69,6 +68,4 @@ class FormatFactoryTest extends TestCase
         $factory = new FormatFactory([]);
         $factory->getFormatFor('json');
     }
-
 }
- 

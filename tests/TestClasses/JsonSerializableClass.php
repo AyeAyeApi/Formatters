@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter\Tests\TestClasses;
 
-
 class JsonSerializableClass implements \JsonSerializable
 {
 
@@ -18,5 +17,4 @@ class JsonSerializableClass implements \JsonSerializable
             'testBool' => true,
         ];
     }
-
-} 
+}

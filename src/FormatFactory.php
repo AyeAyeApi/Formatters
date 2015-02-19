@@ -7,7 +7,6 @@
 
 namespace AyeAye\Formatter;
 
-
 class FormatFactory
 {
 
@@ -26,13 +25,13 @@ class FormatFactory
     public function getFormatterFor($formats)
     {
         // Make an array
-        if(is_scalar($formats)) {
+        if (is_scalar($formats)) {
             $formats = [$formats];
         }
 
         // For each provided suffix, see if we have a formatter for it
-        foreach($formats as $format) {
-            if($formatter = $this->getSpecificFormatterFor($format)) {
+        foreach ($formats as $format) {
+            if ($formatter = $this->getSpecificFormatterFor($format)) {
                 return $formatter;
             }
         }
@@ -59,5 +58,4 @@ class FormatFactory
         }
         return $formatter;
     }
-
 }

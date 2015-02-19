@@ -97,6 +97,4 @@ class JsonpFormatterTest extends TestCase
             'Jsonp did not contain an complex object with test callback name'
         );
     }
-
 }
- 

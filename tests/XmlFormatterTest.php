@@ -90,7 +90,16 @@ class XmlFormatterTest extends TestCase
                 'element2'
             ]
         ];
-        $expectedXml = '<stdClass><childObject><property>value</property></childObject><childArray><_0>element1</_0><_1>element2</_1></childArray></stdClass>';
+        $expectedXml =
+            '<stdClass>'
+            .'<childObject>'
+            .'<property>value</property>'
+            .'</childObject>'
+            .'<childArray>'
+            .'<_0>element1</_0>'
+            .'<_1>element2</_1>'
+            .'</childArray>'
+            .'</stdClass>';
 
         $xmlFormatter = new Xml();
         $xml = $xmlFormatter->format($complexObject);
@@ -99,7 +108,17 @@ class XmlFormatterTest extends TestCase
             'Xml did not contain an complex object: ' . PHP_EOL . $xml
         );
 
-        $expectedXml = '<testName><childObject><property>value</property></childObject><childArray><_0>element1</_0><_1>element2</_1></childArray></testName>';
+        $expectedXml =
+            '<testName>'
+            .'<childObject>'
+            .'<property>value</property>'
+            .'</childObject>'
+            .'<childArray>'
+            .'<_0>element1</_0>'
+            .'<_1>element2</_1>'
+            .'</childArray>'
+            .'</testName>';
+
         $xml = $xmlFormatter->format($complexObject, 'testName');
         $this->assertTrue(
             $xml === $expectedXml,
@@ -121,7 +140,13 @@ class XmlFormatterTest extends TestCase
     public function testJsonSerializable()
     {
         $testObject = new JsonSerializableClass();
-        $expectedXml = '<JsonSerializableClass><array><testString>string</testString><testBool>true</testBool></array></JsonSerializableClass>';
+        $expectedXml =
+            '<JsonSerializableClass>'
+            .'<array>'
+            .'<testString>string</testString>'
+            .'<testBool>true</testBool>'
+            .'</array>'
+            .'</JsonSerializableClass>';
 
         $xmlFormatter = new Xml();
         $xml = $xmlFormatter->format($testObject);
@@ -130,6 +155,4 @@ class XmlFormatterTest extends TestCase
             'Default node name was not data: ' . PHP_EOL . $xml
         );
     }
-
 }
- 

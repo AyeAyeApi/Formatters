@@ -79,6 +79,4 @@ class JsonFormatterTest extends TestCase
             'Json did not contain an complex object'
         );
     }
-
 }
- 

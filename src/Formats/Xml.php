@@ -25,22 +25,14 @@ class Xml extends Formatter
 
     public function format($data, $nodeName = null)
     {
-
         if (!$nodeName) {
             $nodeName = $this->getNodeName($data);
         }
 
-        $xml = "<$nodeName>";
-
         if (is_scalar($data)) {
-            $xml .= $this->parseScalarData($data);
-        } else {
-            $xml .= $this->parseNonScalarData($data);
+            return "<$nodeName>" . $this->parseScalarData($data) . "</$nodeName>";
         }
-
-        $xml .= "</$nodeName>";
-
-        return $xml;
+        return "<$nodeName>".$this->parseNonScalarData($data)."</$nodeName>";
     }
 
     protected function getNodeName($data)

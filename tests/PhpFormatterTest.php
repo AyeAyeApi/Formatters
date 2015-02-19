@@ -116,7 +116,8 @@ class PhpFormatterTest extends TestCase
                 'element2'
             ]
         ];
-        $expectedPhp = 'O:8:"stdClass":2:{s:11:"childObject";O:8:"stdClass":1:{s:8:"property";s:5:"value";}s:10:"childArray";a:2:{i:0;s:8:"element1";i:1;s:8:"element2";}}';
+        $expectedPhp = 'O:8:"stdClass":2:{s:11:"childObject";O:8:"stdClass":1:{s:8:"property";s:5:"value";}s:10:'
+            .'"childArray";a:2:{i:0;s:8:"element1";i:1;s:8:"element2";}}';
 
         $phpFormatter = new Php();
 
@@ -134,5 +135,4 @@ class PhpFormatterTest extends TestCase
         );
 
     }
-
 }
