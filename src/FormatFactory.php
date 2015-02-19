@@ -7,6 +7,7 @@
 
 namespace AyeAye\Formatter;
 
+
 class FormatFactory
 {
 
@@ -18,27 +19,45 @@ class FormatFactory
     }
 
     /**
-     * @param $suffix
+     * @param string|array $formats
      * @return Formatter
      * @throws \Exception
      */
-    public function getFormatFor($suffix)
+    public function getFormatterFor($formats)
     {
-        if (array_key_exists($suffix, $this->formats)) {
-            if (is_object($this->formats[$suffix])) {
-                $format = $this->formats[$suffix];
-            } elseif (is_string($this->formats[$suffix]) && class_exists($this->formats[$suffix])) {
-                $format = new $this->formats[$suffix]();
-            } else {
-                throw new \Exception("Format for '$suffix' not a valid class or object");
-            }
-
-            if ($format instanceof Formatter) {
-                return $format;
-            }
-
-            throw new \Exception("Format for '$suffix' not a Format object or class");
+        // Make an array
+        if(is_scalar($formats)) {
+            $formats = [$formats];
         }
-        throw new \Exception("Format for '$suffix' not found");
+
+        // For each provided suffix, see if we have a formatter for it
+        foreach($formats as $format) {
+            if($formatter = $this->getSpecificFormatterFor($format)) {
+                return $formatter;
+            }
+        }
+        throw new \Exception("Formatter not found");
     }
+
+    /**
+     * @param string $format
+     * @return null|Formatter
+     * @throws \Exception
+     */
+    protected function getSpecificFormatterFor($format)
+    {
+        $formatter = null;
+        if (array_key_exists($format, $this->formats)) {
+            if (is_object($this->formats[$format])) {
+                $formatter = $this->formats[$format];
+            } elseif (is_string($this->formats[$format]) && class_exists($this->formats[$format])) {
+                $formatter = new $this->formats[$format]();
+            }
+            if (!$formatter instanceof Formatter) {
+                throw new \Exception("Formatter for '$format' not a Formatter object or class");
+            }
+        }
+        return $formatter;
+    }
+
 }
