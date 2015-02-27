@@ -21,7 +21,7 @@ class FormatFactoryTest extends TestCase
         $factory = new FormatFactory([
             'json' => new Json(),
         ]);
-        $this->assertTrue($factory->getFormatFor('json') instanceof Json, 'Formatter for json not returned correctly');
+        $this->assertTrue($factory->getFormatterFor('json') instanceof Json, 'Formatter for json not returned correctly');
     }
 
     /**
@@ -32,40 +32,40 @@ class FormatFactoryTest extends TestCase
         $factory = new FormatFactory([
             'json' => '\AyeAye\Formatter\Formats\Json',
         ]);
-        $this->assertTrue($factory->getFormatFor('json') instanceof Json, 'Formatter for json not returned correctly');
+        $this->assertTrue($factory->getFormatterFor('json') instanceof Json, 'Formatter for json not returned correctly');
     }
 
     /**
      * @expectedException        \Exception
-     * @expectedExceptionMessage Format for 'json' not a Format object or class
+     * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
      */
     public function testNonFormatClassException()
     {
         $factory = new FormatFactory([
             'json' => new \stdClass(),
         ]);
-        $factory->getFormatFor('json');
+        $factory->getFormatterFor('json');
     }
 
     /**
      * @expectedException        \Exception
-     * @expectedExceptionMessage Format for 'json' not a valid class or object
+     * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
      */
     public function testInvalidClassException()
     {
         $factory = new FormatFactory([
             'json' => 'this-is-an-invalid-class-name',
         ]);
-        $factory->getFormatFor('json');
+        $factory->getFormatterFor('json');
     }
 
     /**
      * @expectedException        \Exception
-     * @expectedExceptionMessage Format for 'json' not found
+     * @expectedExceptionMessage Formatter not found
      */
     public function testInvalidExtensionException()
     {
         $factory = new FormatFactory([]);
-        $factory->getFormatFor('json');
+        $factory->getFormatterFor('json');
     }
 }
