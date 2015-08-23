@@ -10,73 +10,64 @@ namespace AyeAye\Formatter\Tests\Formats;
 use AyeAye\Formatter\Formats\Jsonp;
 use AyeAye\Formatter\Tests\TestCase;
 
+/**
+ * Class JsonpFormatterTest
+ * @package AyeAye\Formatter\Tests
+ * @coversDefaultClass \AyeAye\Formatter\Formats\Jsonp
+ */
 class JsonpFormatterTest extends TestCase
 {
 
-    public function testContentType()
+    /**
+     * @test
+     * @covers ::__construct
+     * @uses \AyeAye\Formatter\Formats\Jsonp::setCallbackName
+     */
+    public function testConstruct()
     {
-        $jsonpFormatter = new Jsonp();
-        $contentType = $jsonpFormatter->getContentType();
+        $jsonp = new Jsonp();
+        $this->assertNull(
+            $this->getObjectAttribute($jsonp, 'callbackName')
+        );
+
+        $jsonp = new Jsonp('testCallback');
         $this->assertSame(
-            'application/javascript',
-            $contentType
+            'testCallback',
+            $this->getObjectAttribute($jsonp, 'callbackName')
         );
     }
 
-    public function testHeader()
+    /**
+     * @test
+     * @covers ::setCallbackName
+     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     */
+    public function testSetCallbackName()
     {
-        $jsonpFormatter = new Jsonp();
-        $this->assertTrue(
-            $jsonpFormatter->getHeader() === '',
-            'Jsonp header was not an empty string'
+        $jsonp = new Jsonp();
+        $this->assertNull(
+            $this->getObjectAttribute($jsonp, 'callbackName')
+        );
+
+        $jsonp->setCallbackName('testCallback');
+        $this->assertSame(
+            'testCallback',
+            $this->getObjectAttribute($jsonp, 'callbackName')
         );
     }
 
-    public function testFooter()
-    {
-        $jsonpFormatter = new Jsonp();
-        $this->assertTrue(
-            $jsonpFormatter->getFooter() === '',
-            'Jsonp footer was not an empty string'
-        );
-    }
-
-    public function testSimpleObjectJsonp()
-    {
-        $blankObject = new \stdClass();
-        $jsonpFormatter = new Jsonp();
-        $this->assertTrue(
-            $jsonpFormatter->format($blankObject) === 'callback({});',
-            'Jsonp did not contain an empty object with default callback name'
-        );
-        $jsonpFormatter->setCallbackName('testCallback');
-        $this->assertTrue(
-            $jsonpFormatter->format($blankObject) === 'testCallback({});',
-            'Jsonp did not contain an empty object with test callback name'
-        );
-    }
-
-    public function testSimpleArrayJsonp()
-    {
-        $blankArray = [];
-        $jsonpFormatter = new Jsonp();
-        $this->assertTrue(
-            $jsonpFormatter->format($blankArray) === 'callback([]);',
-            'Jsonp did not contain an empty array with default callback name'
-        );
-        $jsonpFormatter->setCallbackName('testCallback');
-        $this->assertTrue(
-            $jsonpFormatter->format($blankArray) === 'testCallback([]);',
-            'Jsonp did not contain an empty array with test callback name'
-        );
-    }
-
+    /**
+     * @test
+     * @covers ::format
+     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     * @uses \AyeAye\Formatter\Formats\Jsonp::setCallbackName
+     */
     public function testComplexObject()
     {
         $complexObject = (object)[
             'childObject' => (object)[
-                    'property' => 'value'
-                ],
+                'property' => 'value'
+            ],
             'childArray' => [
                 'element1',
                 'element2'
@@ -85,17 +76,15 @@ class JsonpFormatterTest extends TestCase
         $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
 
         $jsonpFormatter = new Jsonp();
-        $json = $jsonpFormatter->format($complexObject);
-        $this->assertTrue(
-            $json === "callback($expectedJson);",
-            'Jsonp did not contain an complex object with default callback name'
+        $this->assertSame(
+            "callback($expectedJson);",
+            $jsonpFormatter->format($complexObject)
         );
 
         $jsonpFormatter->setCallbackName('testCallback');
-        $json = $jsonpFormatter->format($complexObject);
-        $this->assertTrue(
-            $json === "testCallback($expectedJson);",
-            'Jsonp did not contain an complex object with test callback name'
+        $this->assertSame(
+            "testCallback($expectedJson);",
+            $jsonpFormatter->format($complexObject)
         );
     }
 }
