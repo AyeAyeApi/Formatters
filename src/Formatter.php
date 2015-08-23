@@ -21,9 +21,22 @@ abstract class Formatter
     }
 
     /**
+     * Format the entire file/output
+     * @param mixed $data
+     * @param string|null $name
+     * @return string
+     */
+    public function fullFormat($data, $name = null)
+    {
+        return $this->getHeader()
+        . $this->format($data, $name)
+        . $this->getFooter();
+    }
+
+    /**
      * Format the data
-     * @param $data
-     * @param $name string|null
+     * @param mixed $data
+     * @param string|null $name
      * @return string
      */
     abstract public function format($data, $name = null);
