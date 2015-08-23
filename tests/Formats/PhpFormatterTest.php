@@ -10,103 +10,102 @@ namespace AyeAye\Formatter\Tests\Formats;
 use AyeAye\Formatter\Formats\Php;
 use AyeAye\Formatter\Tests\TestCase;
 
+/**
+ * Class PhpFormatterTest
+ * @package AyeAye\Formatter\Tests
+ * @coversDefaultClass \AyeAye\Formatter\Formats\Php
+ */
 class PhpFormatterTest extends TestCase
 {
+    /**
+     * @test
+     * @covers ::__construct
+     * @uses \AyeAye\Formatter\Formats\Php::setCallbackName
+     */
+    public function testConstruct()
+    {
+        $php = new Php();
+        $this->assertNull(
+            $this->getObjectAttribute($php, 'callbackName')
+        );
 
+        $php = new Php('callback');
+        $this->assertSame(
+            'callback',
+            $this->getObjectAttribute($php, 'callbackName')
+        );
+    }
+
+    /**
+     * @test
+     * @covers ::getContentType
+     * @uses \AyeAye\Formatter\Formats\Php::__construct
+     * @uses \AyeAye\Formatter\Formats\Php::setCallbackName
+     * @uses \AyeAye\Formatter\Formatter::getContentType
+     */
     public function testContentType()
     {
-        $phpFormatter = new Php();
-        $contentType = $phpFormatter->getContentType();
-        $this->assertTrue(
-            $contentType === 'text/plain',
-            'Incorrect content type for php serialized string' . PHP_EOL . $contentType
+        $php = new Php();
+        $this->assertSame(
+            'text/plain',
+            $php->getContentType()
         );
 
-        $phpFormatter->setCallbackName('callback');
-        $contentType = $phpFormatter->getContentType();
-        $this->assertTrue(
-            $contentType === 'application/php',
-            'Incorrect content type for php using callback: ' . PHP_EOL . $contentType
+        $php->setCallbackName('callback');
+        $this->assertSame(
+            'application/php',
+            $php->getContentType()
         );
     }
 
-    public function testHeader()
+    /**
+     * @test
+     * @covers ::setCallbackName
+     * @uses \AyeAye\Formatter\Formats\Php::__construct
+     */
+    public function testSetCallbackName()
     {
-        $phpFormatter = new Php();
-
-        $header = $phpFormatter->getHeader();
-        $this->assertTrue(
-            $header === '',
-            'Php header was not an empty string: ' . PHP_EOL . $header
+        $php = new Php();
+        $this->assertNull(
+            $this->getObjectAttribute($php, 'callbackName')
         );
 
-        $phpFormatter->setCallbackName('callback');
-        $header = $phpFormatter->getHeader();
-        $this->assertTrue(
-            $header === '<?php ',
-            'Php header did not include open tag using callback: ' . PHP_EOL . $header
+        $php->setCallbackName('callback');
+        $this->assertSame(
+            'callback',
+            $this->getObjectAttribute($php, 'callbackName')
         );
     }
 
-    public function testFooter()
+    /**
+     * @test
+     * @covers ::getHeader
+     * @uses \AyeAye\Formatter\Formats\Php::__construct
+     * @uses \AyeAye\Formatter\Formats\Php::setCallbackName
+     * @uses \AyeAye\Formatter\Formatter::getHeader
+     */
+    public function testGetHeader()
     {
-        $phpFormatter = new Php();
-
-        $footer = $phpFormatter->getFooter();
-        $this->assertTrue(
-            $footer === '',
-            'Php footer was not an empty string: ' . PHP_EOL . $footer
+        $php = new Php();
+        $this->assertSame(
+            '',
+            $php->getHeader()
         );
 
-        $phpFormatter->setCallbackName('callback');
-        $footer = $phpFormatter->getFooter();
-        $this->assertTrue(
-            $footer === '',
-            'Php footer was not an empty string using callback: ' . PHP_EOL . $footer
+        $php->setCallbackName('callback');
+        $this->assertSame(
+            '<?php ',
+            $php->getHeader()
         );
     }
 
-    public function testSimpleObjectPhp()
-    {
-        $blankObject = new \stdClass();
-        $phpFormatter = new Php();
-
-        $expectedPhp = 'O:8:"stdClass":0:{}';
-        $php = $phpFormatter->format($blankObject);
-        $this->assertTrue(
-            $php === $expectedPhp,
-            'Php did not contain an empty object: ' . PHP_EOL . $php
-        );
-
-        $phpFormatter->setCallbackName('callback');
-        $php = $phpFormatter->format($blankObject);
-        $this->assertTrue(
-            $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain an empty object using callback: ' . PHP_EOL . $php
-        );
-    }
-
-    public function testSimpleArrayPhp()
-    {
-        $blankArray = [];
-        $phpFormatter = new Php();
-
-        $expectedPhp = 'a:0:{}';
-        $php = $phpFormatter->format($blankArray);
-        $this->assertTrue(
-            $php === $expectedPhp,
-            'Php did not contain an empty array: ' . PHP_EOL . $php
-        );
-
-        $phpFormatter->setCallbackName('callback');
-        $php = $phpFormatter->format($blankArray);
-        $this->assertTrue(
-            $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain an empty object using callback: ' . PHP_EOL . $php
-        );
-    }
-
-    public function testComplexObject()
+    /**
+     * @test
+     * @covers ::format
+     * @uses \AyeAye\Formatter\Formats\Php::__construct
+     * @uses \AyeAye\Formatter\Formats\Php::setCallbackName
+     */
+    public function testFormat()
     {
         $complexObject = (object)[
             'childObject' => (object)[
@@ -120,19 +119,16 @@ class PhpFormatterTest extends TestCase
         $expectedPhp = 'O:8:"stdClass":2:{s:11:"childObject";O:8:"stdClass":1:{s:8:"property";s:5:"value";}s:10:'
             .'"childArray";a:2:{i:0;s:8:"element1";i:1;s:8:"element2";}}';
 
-        $phpFormatter = new Php();
-
-        $php = $phpFormatter->format($complexObject);
-        $this->assertTrue(
-            $php === $expectedPhp,
-            'Php did not contain the complex object: ' . PHP_EOL . $php
+        $php = new Php();
+        $this->assertSame(
+            $expectedPhp,
+            $php->format($complexObject)
         );
 
-        $phpFormatter->setCallbackName('callback');
-        $php = $phpFormatter->format($complexObject);
-        $this->assertTrue(
-            $php === "callback(unserialize('$expectedPhp'));",
-            'Php did not contain the complex object using callback: ' . PHP_EOL . $php
+        $php = new Php('callback');
+        $this->assertSame(
+            "callback(unserialize('$expectedPhp'));",
+            $php->format($complexObject)
         );
 
     }
