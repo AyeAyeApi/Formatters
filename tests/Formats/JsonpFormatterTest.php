@@ -5,9 +5,10 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests;
+namespace AyeAye\Formatter\Tests\Formats;
 
 use AyeAye\Formatter\Formats\Jsonp;
+use AyeAye\Formatter\Tests\TestCase;
 
 class JsonpFormatterTest extends TestCase
 {
@@ -16,9 +17,9 @@ class JsonpFormatterTest extends TestCase
     {
         $jsonpFormatter = new Jsonp();
         $contentType = $jsonpFormatter->getContentType();
-        $this->assertTrue(
-            $contentType === 'application/javascript',
-            'Incorrect content type for Jsonp'
+        $this->assertSame(
+            'application/javascript',
+            $contentType
         );
     }
 

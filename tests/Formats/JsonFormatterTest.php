@@ -5,9 +5,10 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests;
+namespace AyeAye\Formatter\Tests\Formats;
 
 use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Tests\TestCase;
 
 class JsonFormatterTest extends TestCase
 {
