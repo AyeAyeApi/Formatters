@@ -21,12 +21,12 @@ class JsonpFormatterTest extends TestCase
     /**
      * @test
      * @covers ::__construct
-     * @uses \AyeAye\Formatter\Formats\Jsonp::setCallbackName
      */
     public function testConstruct()
     {
         $jsonp = new Jsonp();
-        $this->assertNull(
+        $this->assertSame(
+            'callback',
             $this->getObjectAttribute($jsonp, 'callbackName')
         );
 
@@ -39,28 +39,11 @@ class JsonpFormatterTest extends TestCase
 
     /**
      * @test
-     * @covers ::setCallbackName
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
-     */
-    public function testSetCallbackName()
-    {
-        $jsonp = new Jsonp();
-        $this->assertNull(
-            $this->getObjectAttribute($jsonp, 'callbackName')
-        );
-
-        $jsonp->setCallbackName('testCallback');
-        $this->assertSame(
-            'testCallback',
-            $this->getObjectAttribute($jsonp, 'callbackName')
-        );
-    }
-
-    /**
-     * @test
      * @covers ::format
+     * @covers ::fullFormat
+     * @covers ::getHeader
+     * @covers ::getFooter
      * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
-     * @uses \AyeAye\Formatter\Formats\Jsonp::setCallbackName
      */
     public function testComplexObject()
     {
@@ -78,13 +61,13 @@ class JsonpFormatterTest extends TestCase
         $jsonpFormatter = new Jsonp();
         $this->assertSame(
             "callback($expectedJson);",
-            $jsonpFormatter->format($complexObject)
+            $jsonpFormatter->fullFormat($complexObject)
         );
 
-        $jsonpFormatter->setCallbackName('testCallback');
+        $jsonpFormatter = new Jsonp('testCallback');
         $this->assertSame(
             "testCallback($expectedJson);",
-            $jsonpFormatter->format($complexObject)
+            $jsonpFormatter->fullFormat($complexObject)
         );
     }
 }

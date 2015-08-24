@@ -34,7 +34,7 @@ abstract class Formatter
     }
 
     /**
-     * Format the data
+     * Format part of the data
      * @param mixed $data
      * @param string|null $name
      * @return string

@@ -12,32 +12,56 @@ use AyeAye\Formatter\Formatter;
 class Jsonp extends Formatter
 {
 
+    /**
+     * Override content type
+     * @var string
+     */
     protected $contentType = 'application/javascript';
 
-    protected $callbackName;
+    /**
+     * The name of the callback
+     * @var string
+     */
+    protected $callbackName = 'callback';
 
-
+    /**
+     * Give the name of the callback to be used for jsonp
+     * @param string|null $callbackName
+     */
     public function __construct($callbackName = null)
     {
-        $this->setCallbackName($callbackName);
+        if($callbackName) {
+            // TODO: Test name
+            $this->callbackName = $callbackName;
+        }
     }
 
     /**
-     * Set the name of the javascript function that will be called
-     * @param $callbackName
+     * Format part of the data
+     * @param mixed $data
+     * @param string|null $name
+     * @return string
      */
-    public function setCallbackName($callbackName)
-    {
-        $this->callbackName = $callbackName;
-    }
-
     public function format($data, $name = null)
     {
-        $callbackName = $this->callbackName;
-        if (!$callbackName) {
-            $callbackName = $name ? $name : 'callback';
-        }
-        $json = json_encode($data);
-        return "$callbackName($json);";
+        return json_encode($data);
+    }
+
+    /**
+     * Get anything that must come before any data
+     * @return string
+     */
+    public function getHeader()
+    {
+        return "{$this->callbackName}(";
+    }
+
+    /**
+     * Get anything that must come after data
+     * @return string
+     */
+    public function getFooter()
+    {
+        return ");";
     }
 }
