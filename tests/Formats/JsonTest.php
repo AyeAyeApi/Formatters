@@ -15,7 +15,7 @@ use AyeAye\Formatter\Tests\TestCase;
  * @package AyeAye\Formatter\Tests
  * @coversDefaultClass \AyeAye\Formatter\Formats\Json
  */
-class JsonFormatterTest extends TestCase
+class JsonTest extends TestCase
 {
     /**
      * @test
