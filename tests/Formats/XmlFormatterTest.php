@@ -11,90 +11,96 @@ use AyeAye\Formatter\Formats\Xml;
 use AyeAye\Formatter\Tests\TestCase;
 use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
+/**
+ * Class XmlFormatterTest
+ * @package AyeAye\Formatter\Tests
+ * @coversDefaultClass \AyeAye\Formatter\Formats\Xml
+ */
 class XmlFormatterTest extends TestCase
 {
-
-    public function testContentType()
+    /**
+     * @test
+     * @covers ::getHeader
+     */
+    public function testGetHeader()
     {
-        $xmlFormatter = new Xml();
-        $contentType = $xmlFormatter->getContentType();
-        $this->assertTrue(
-            $contentType === 'application/xml',
-            'Incorrect content type for Xml: ' . PHP_EOL . $contentType
+        $xml = new Xml();
+        $this->assertSame(
+            '<?xml version="1.0" encoding="UTF-8" ?>',
+            $xml->getHeader()
         );
     }
 
-    public function testHeader()
+    /**
+     * @test
+     * @covers ::getNodeName
+     */
+    public function testGetNodeName()
     {
-        $xmlFormatter = new Xml();
-        $header = $xmlFormatter->getHeader();
-        $this->assertTrue(
-            $header === '<?xml version="1.0" encoding="UTF-8" ?>',
-            'Xml header did not contain schema definition: ' . PHP_EOL . $header
+        $xml = new Xml();
+        $getNodeName = $this->getObjectMethod($xml, 'getNodeName');
+
+        $this->assertSame(
+            'stdClass',
+            $getNodeName(new \stdClass())
+        );
+
+        $this->assertSame(
+            'array',
+            $getNodeName([])
+        );
+
+        $this->assertSame(
+            'data',
+            $getNodeName(true)
         );
     }
 
-    public function testFooter()
+    /**
+     * @test
+     * @covers ::parseScalarData
+     */
+    public function testParseScalarData()
     {
-        $xmlFormatter = new Xml();
-        $footer = $xmlFormatter->getFooter();
-        $this->assertTrue(
-            $footer === '',
-            'Xml footer was not an empty string: ' . PHP_EOL . $footer
+        $xml = new Xml();
+        $parseScalarData = $this->getObjectMethod($xml, 'parseScalarData');
+
+        $this->assertSame(
+            'true',
+            $parseScalarData(true)
+        );
+
+        $this->assertSame(
+            '&lt;b&gt;TEST&lt;/b&gt;',
+            $parseScalarData('<b>TEST</b>')
         );
     }
 
-    public function testSimpleObjectXml()
-    {
-        $blankObject = new \stdClass();
-        $xmlFormatter = new Xml();
-
-        $xml = $xmlFormatter->format($blankObject);
-        $this->assertTrue(
-            $xml === '<stdClass></stdClass>',
-            'Xml did not contain an empty object: ' . PHP_EOL . $xml
-        );
-
-        $xml = $xmlFormatter->format($blankObject, 'testName');
-        $this->assertTrue(
-            $xml === '<testName></testName>',
-            'Xml did not contain an empty object with test name: ' . PHP_EOL . $xml
-        );
-    }
-
-    public function testSimpleArrayXml()
-    {
-        $blankArray = [];
-        $xmlFormatter = new Xml();
-
-        $xml = $xmlFormatter->format($blankArray);
-        $this->assertTrue(
-            $xml === '<array></array>',
-            'Xml did not contain an empty array: ' . PHP_EOL . $xml
-        );
-
-        $xml = $xmlFormatter->format($blankArray, 'testName');
-        $this->assertTrue(
-            $xml === '<testName></testName>',
-            'Xml did not contain an empty array with test name: ' . PHP_EOL . $xml
-        );
-    }
-
-    public function testComplexObject()
+    /**
+     * @test
+     * @covers ::format
+     * @covers ::parseNonScalarData
+     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
+     * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
+     */
+    public function testFormat()
     {
         $complexObject = (object)[
-            'childObject' => (object)[
-                    'property' => 'value'
-                ],
+            'childObject' => new JsonSerializableClass(),
             'childArray' => [
                 'element1',
                 'element2'
             ]
         ];
+
         $expectedXml =
             '<stdClass>'
             .'<childObject>'
-            .'<property>value</property>'
+            .'<array>'
+            .'<testString>string</testString>'
+            .'<testBool>true</testBool>'
+            .'</array>'
             .'</childObject>'
             .'<childArray>'
             .'<_0>element1</_0>'
@@ -102,17 +108,19 @@ class XmlFormatterTest extends TestCase
             .'</childArray>'
             .'</stdClass>';
 
-        $xmlFormatter = new Xml();
-        $xml = $xmlFormatter->format($complexObject);
-        $this->assertTrue(
-            $xml === $expectedXml,
-            'Xml did not contain an complex object: ' . PHP_EOL . $xml
+        $xml = new Xml();
+        $this->assertSame(
+            $expectedXml,
+            $xml->format($complexObject)
         );
 
         $expectedXml =
             '<testName>'
             .'<childObject>'
-            .'<property>value</property>'
+            .'<array>'
+            .'<testString>string</testString>'
+            .'<testBool>true</testBool>'
+            .'</array>'
             .'</childObject>'
             .'<childArray>'
             .'<_0>element1</_0>'
@@ -120,40 +128,9 @@ class XmlFormatterTest extends TestCase
             .'</childArray>'
             .'</testName>';
 
-        $xml = $xmlFormatter->format($complexObject, 'testName');
-        $this->assertTrue(
-            $xml === $expectedXml,
-            'Xml did not contain an complex object with test name: ' . PHP_EOL . $xml
-        );
-    }
-
-    public function testDefaultNodeName()
-    {
-        $empty = '';
-        $xmlFormatter = new Xml();
-        $xml = $xmlFormatter->format($empty);
-        $this->assertTrue(
-            $xml === '<data></data>',
-            'Default node name was not data: ' . PHP_EOL . $xml
-        );
-    }
-
-    public function testJsonSerializable()
-    {
-        $testObject = new JsonSerializableClass();
-        $expectedXml =
-            '<JsonSerializableClass>'
-            .'<array>'
-            .'<testString>string</testString>'
-            .'<testBool>true</testBool>'
-            .'</array>'
-            .'</JsonSerializableClass>';
-
-        $xmlFormatter = new Xml();
-        $xml = $xmlFormatter->format($testObject);
-        $this->assertTrue(
-            $xml === $expectedXml,
-            'Default node name was not data: ' . PHP_EOL . $xml
+        $this->assertSame(
+            $expectedXml,
+            $xml->format($complexObject, 'testName')
         );
     }
 }
