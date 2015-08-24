@@ -15,7 +15,7 @@ use AyeAye\Formatter\Tests\TestCase;
  * @package AyeAye\Formatter\Tests
  * @coversDefaultClass \AyeAye\Formatter\Formats\Jsonp
  */
-class JsonpFormatterTest extends TestCase
+class JsonpTest extends TestCase
 {
 
     /**
@@ -39,13 +39,44 @@ class JsonpFormatterTest extends TestCase
 
     /**
      * @test
-     * @covers ::format
-     * @covers ::fullFormat
      * @covers ::getHeader
+     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     */
+    public function testGetHeader()
+    {
+        $jsonp = new Jsonp();
+        $this->assertSame(
+            "callback('",
+            $jsonp->getHeader()
+        );
+
+        $jsonp = new Jsonp('testCallback');
+        $this->assertSame(
+            "testCallback('",
+            $jsonp->getHeader()
+        );
+    }
+
+    /**
+     * @test
      * @covers ::getFooter
      * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
      */
-    public function testComplexObject()
+    public function testGetFooter()
+    {
+        $jsonp = new Jsonp();
+        $this->assertSame(
+            "');",
+            $jsonp->getFooter()
+        );
+    }
+
+    /**
+     * @test
+     * @covers ::format
+     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     */
+    public function testFormat()
     {
         $complexObject = (object)[
             'childObject' => (object)[
@@ -56,18 +87,11 @@ class JsonpFormatterTest extends TestCase
                 'element2'
             ]
         ];
+        $jsonp = new Jsonp();
         $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
-
-        $jsonpFormatter = new Jsonp();
-        $this->assertSame(
-            "callback($expectedJson);",
-            $jsonpFormatter->fullFormat($complexObject)
-        );
-
-        $jsonpFormatter = new Jsonp('testCallback');
-        $this->assertSame(
-            "testCallback($expectedJson);",
-            $jsonpFormatter->fullFormat($complexObject)
+        $this->assertJsonStringEqualsJsonString(
+            $expectedJson,
+            $jsonp->format($complexObject)
         );
     }
 }

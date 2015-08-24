@@ -32,11 +32,11 @@ class JsonTest extends TestCase
                 'element2'
             ]
         ];
-        $jsonFormatter = new Json();
+        $json = new Json();
         $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
         $this->assertJsonStringEqualsJsonString(
             $expectedJson,
-            $jsonFormatter->format($complexObject)
+            $json->format($complexObject)
         );
     }
 }

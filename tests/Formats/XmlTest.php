@@ -16,7 +16,7 @@ use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
  * @package AyeAye\Formatter\Tests
  * @coversDefaultClass \AyeAye\Formatter\Formats\Xml
  */
-class XmlFormatterTest extends TestCase
+class XmlTest extends TestCase
 {
     /**
      * @test

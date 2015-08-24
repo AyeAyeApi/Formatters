@@ -53,7 +53,7 @@ class Jsonp extends Formatter
      */
     public function getHeader()
     {
-        return "{$this->callbackName}(";
+        return "{$this->callbackName}('";
     }
 
     /**
@@ -62,6 +62,6 @@ class Jsonp extends Formatter
      */
     public function getFooter()
     {
-        return ");";
+        return "');";
     }
 }
