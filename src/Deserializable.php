@@ -12,7 +12,7 @@ namespace AyeAye\Formatter;
  * Interface AyeAyeUnserializable
  * @package AyeAye\Formatter
  */
-interface AyeAyeUnserializable
+interface Deserializable
 {
 
     /**
