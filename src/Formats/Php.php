@@ -48,7 +48,7 @@ class Php extends Formatter
 
     public function format($data, $name = null)
     {
-        $serialisedData = serialize($data);
+        $serialisedData = serialize($this->parseData($data));
         if ($this->callbackName) {
             $serialisedData = $this->callbackName . "(unserialize('$serialisedData'));";
         }

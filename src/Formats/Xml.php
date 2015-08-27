@@ -25,6 +25,7 @@ class Xml extends Formatter
 
     public function format($data, $nodeName = null)
     {
+        $data = $this->parseData($data);
         if (!$nodeName) {
             $nodeName = $this->getNodeName($data);
         }

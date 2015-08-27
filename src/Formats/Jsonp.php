@@ -37,7 +37,7 @@ class Jsonp extends Formatter
         if (!$callbackName) {
             $callbackName = $name ? $name : 'callback';
         }
-        $json = json_encode($data);
+        $json = json_encode($this->parseData($data));
         return "$callbackName($json);";
     }
 }
