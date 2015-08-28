@@ -7,9 +7,7 @@
 
 namespace AyeAye\Formatter\Formats;
 
-use AyeAye\Formatter\Formatter;
-
-class Jsonp extends Formatter
+class Jsonp extends Json
 {
 
     /**
@@ -34,17 +32,6 @@ class Jsonp extends Formatter
             // TODO: Test name
             $this->callbackName = $callbackName;
         }
-    }
-
-    /**
-     * Format part of the data
-     * @param mixed $data
-     * @param string|null $name
-     * @return string
-     */
-    public function format($data, $name = null)
-    {
-        return json_encode($this->parseData($data));
     }
 
     /**
