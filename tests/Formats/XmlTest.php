@@ -9,7 +9,7 @@ namespace AyeAye\Formatter\Tests\Formats;
 
 use AyeAye\Formatter\Formats\Xml;
 use AyeAye\Formatter\Tests\TestCase;
-use AyeAye\Formatter\Tests\TestClasses\SerializableClass;
+use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
  * Class XmlFormatterTest
@@ -87,7 +87,7 @@ class XmlTest extends TestCase
     public function testFormat()
     {
         $complexObject = (object)[
-            'childObject' => new SerializableClass(),
+            'childObject' => new JsonSerializableClass(),
             'childArray' => [
                 'element1',
                 'element2'
