@@ -44,7 +44,7 @@ class Jsonp extends Formatter
      */
     public function format($data, $name = null)
     {
-        return json_encode($data);
+        return json_encode($this->parseData($data));
     }
 
     /**

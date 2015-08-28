@@ -58,4 +58,34 @@ abstract class Formatter
     {
         return '';
     }
+
+    /**
+     * Recursively turn data into arrays for output.
+     * This method is used to make sure only desired data is output from objects.
+     * AyeAye\Formatters\Serializable takes precedence over JsonSerializable, everything else is cast straight to array
+     * @param Serializable|\JsonSerializable|mixed $data
+     * @return array
+     */
+    protected function parseData($data)
+    {
+        if(is_scalar($data)) {
+            return $data;
+        }
+
+        if ($data instanceof Serializable) {
+            $data = $data->ayeAyeSerialize();
+        }
+        elseif ($data instanceof \JsonSerializable) {
+            $data = $data->jsonSerialize();
+        }
+        elseif(!is_array($data)) {
+            $data = (array)$data;
+        }
+
+        foreach($data as $key => $value) {
+            $data[$key] = $this->parseData($value);
+        }
+
+        return $data;
+    }
 }
