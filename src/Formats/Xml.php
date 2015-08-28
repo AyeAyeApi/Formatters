@@ -57,10 +57,6 @@ class Xml extends Formatter
 
     protected function parseNonScalarData($data)
     {
-        if ($data instanceof \JsonSerializable) {
-            return $this->format($data->jsonSerialize());
-        }
-
         $xml = '';
         foreach ($data as $property => $value) {
             // Clear non-alphanumeric characters
