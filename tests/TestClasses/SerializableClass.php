@@ -7,7 +7,7 @@
 
 namespace AyeAye\Formatter\Tests\TestClasses;
 
-class JsonSerializableClass implements \JsonSerializable
+class SerializableClass implements \JsonSerializable
 {
 
     public function jsonSerialize()
