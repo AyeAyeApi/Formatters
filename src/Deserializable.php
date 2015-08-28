@@ -17,7 +17,8 @@ interface Deserializable
 
     /**
      * Take data and apply it to a fresh object
+     * @paran array $data
      * @return static
      */
-    public static function ayeAyeUnserialize($data);
+    public static function ayeAyeDeserialize(array $data);
 }
