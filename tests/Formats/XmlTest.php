@@ -83,6 +83,7 @@ class XmlTest extends TestCase
      * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
      * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
      * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
+     * @uses \AyeAye\Formatter\Formatter::parseData
      */
     public function testFormat()
     {

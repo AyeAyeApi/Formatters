@@ -71,27 +71,4 @@ class JsonpTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     * @covers ::format
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
-     */
-    public function testFormat()
-    {
-        $complexObject = (object)[
-            'childObject' => (object)[
-                'property' => 'value'
-            ],
-            'childArray' => [
-                'element1',
-                'element2'
-            ]
-        ];
-        $jsonp = new Jsonp();
-        $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
-        $this->assertJsonStringEqualsJsonString(
-            $expectedJson,
-            $jsonp->format($complexObject)
-        );
-    }
 }
