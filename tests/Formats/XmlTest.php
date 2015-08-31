@@ -132,7 +132,7 @@ class XmlTest extends TestCase
         ];
 
         $expectedXml =
-            '<array>'
+            '<stdClass>'
             . '<childObject>'
             . '<testString>string</testString>'
             . '<testBool>true</testBool>'
@@ -141,7 +141,7 @@ class XmlTest extends TestCase
             . '<childArray>element1</childArray>'
             . '<childArray>element2</childArray>'
             . '</childArray>'
-            . '</array>';
+            . '</stdClass>';
 
         $xml = new Xml();
         $this->assertSame(

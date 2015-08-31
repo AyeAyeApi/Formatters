@@ -25,10 +25,10 @@ class Xml extends Formatter
 
     public function format($data, $nodeName = null)
     {
-        $data = $this->parseData($data);
         if (!$nodeName) {
             $nodeName = $this->getNodeName($data);
         }
+        $data = $this->parseData($data);
 
         if (is_scalar($data)) {
             return "<$nodeName>" . $this->parseScalarData($data) . "</$nodeName>";
