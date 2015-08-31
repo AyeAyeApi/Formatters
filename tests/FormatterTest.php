@@ -8,6 +8,8 @@
 namespace AyeAye\Formatter\Tests;
 
 use AyeAye\Formatter\Formatter;
+use AyeAye\Formatter\Tests\TestClasses\AyeAyeSerializableClass;
+use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
  * Class FormatterTest
@@ -78,6 +80,69 @@ class FormatterTest extends TestCase
         $this->assertSame(
             '',
             $formatter->fullFormat('data')
+        );
+    }
+
+    /**
+     * @test
+     * @covers ::parseData
+     */
+    public function testParseData()
+    {
+        $formatter = $this->getFormatter();
+        $parseData = $this->getObjectMethod($formatter, 'parseData');
+
+        // Scalar
+        $data = 'test';
+        $this->assertSame(
+            $data,
+            $parseData($data)
+        );
+
+        // Array
+        $array = [
+            'testString' => 'string',
+            'testBool' => true,
+        ];
+        $this->assertSame(
+            [
+                'testString' => 'string',
+                'testBool' => true,
+            ],
+            $parseData($array)
+        );
+
+        // stdClass
+        $stdClass = (object)[
+            'testString' => 'string',
+            'testBool' => true,
+        ];
+        $this->assertSame(
+            [
+                'testString' => 'string',
+                'testBool' => true,
+            ],
+            $parseData($stdClass)
+        );
+
+        // AyeAye Serializable
+        $ayeAyeSerializable = new AyeAyeSerializableClass();
+        $this->assertSame(
+            [
+                'testString' => 'string',
+                'testBool' => true,
+            ],
+            $parseData($ayeAyeSerializable)
+        );
+
+        // JsonSerializable
+        $jsonSerializable = new JsonSerializableClass();
+        $this->assertSame(
+            [
+                'testString' => 'string',
+                'testBool' => true,
+            ],
+            $parseData($jsonSerializable)
         );
     }
 }
