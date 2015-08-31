@@ -15,11 +15,12 @@ use AyeAye\Formatter\Tests\TestCase;
  * @package AyeAye\Formatter\Tests
  * @coversDefaultClass \AyeAye\Formatter\Formats\Json
  */
-class JsonFormatterTest extends TestCase
+class JsonTest extends TestCase
 {
     /**
      * @test
      * @covers ::format
+     * @uses \AyeAye\Formatter\Formatter::parseData
      */
     public function testFormat()
     {
@@ -32,11 +33,11 @@ class JsonFormatterTest extends TestCase
                 'element2'
             ]
         ];
-        $jsonFormatter = new Json();
+        $json = new Json();
         $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
         $this->assertJsonStringEqualsJsonString(
             $expectedJson,
-            $jsonFormatter->format($complexObject)
+            $json->format($complexObject)
         );
     }
 }

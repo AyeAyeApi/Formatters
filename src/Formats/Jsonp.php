@@ -7,37 +7,48 @@
 
 namespace AyeAye\Formatter\Formats;
 
-use AyeAye\Formatter\Formatter;
-
-class Jsonp extends Formatter
+class Jsonp extends Json
 {
 
+    /**
+     * Override content type
+     * @var string
+     */
     protected $contentType = 'application/javascript';
 
-    protected $callbackName;
+    /**
+     * The name of the callback
+     * @var string
+     */
+    protected $callbackName = 'callback';
 
-
+    /**
+     * Give the name of the callback to be used for jsonp
+     * @param string|null $callbackName
+     */
     public function __construct($callbackName = null)
     {
-        $this->setCallbackName($callbackName);
+        if ($callbackName) {
+            // TODO: Test name
+            $this->callbackName = $callbackName;
+        }
     }
 
     /**
-     * Set the name of the javascript function that will be called
-     * @param $callbackName
+     * Returns callback name plus the first part of the wrapper around the data
+     * @return string
      */
-    public function setCallbackName($callbackName)
+    public function getHeader()
     {
-        $this->callbackName = $callbackName;
+        return "{$this->callbackName}('";
     }
 
-    public function format($data, $name = null)
+    /**
+     * Returns the end of the wrapper around the data
+     * @return string
+     */
+    public function getFooter()
     {
-        $callbackName = $this->callbackName;
-        if (!$callbackName) {
-            $callbackName = $name ? $name : 'callback';
-        }
-        $json = json_encode($data);
-        return "$callbackName($json);";
+        return "');";
     }
 }
