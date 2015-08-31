@@ -33,7 +33,7 @@ class Xml extends Formatter
         if (is_scalar($data)) {
             return "<$nodeName>" . $this->parseScalarData($data) . "</$nodeName>";
         }
-        return "<$nodeName>".$this->parseNonScalarData($data)."</$nodeName>";
+        return "<$nodeName>".$this->parseNonScalarData($data, $nodeName)."</$nodeName>";
     }
 
     protected function getNodeName($data)
@@ -55,16 +55,19 @@ class Xml extends Formatter
         return htmlspecialchars($data);
     }
 
-    protected function parseNonScalarData($data)
+    protected function parseNonScalarData($data, $fallbackName = null)
     {
         $xml = '';
+        if(!$fallbackName) {
+            $fallbackName = $this->defaultNodeName;
+        }
         foreach ($data as $property => $value) {
             // Clear non-alphanumeric characters
             $property = preg_replace('/\W/', '', $property);
 
             // If numeric we'll stick a character in front of it, a bit hack but should be valid
             if (is_numeric($property)) {
-                $property = $this->numericArrayPrefix . $property;
+                $property = $fallbackName;
             }
             $xml .= $this->format($value, $property);
         }

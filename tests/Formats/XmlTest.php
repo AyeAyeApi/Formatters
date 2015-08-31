@@ -102,8 +102,8 @@ class XmlTest extends TestCase
             .'<testBool>true</testBool>'
             .'</childObject>'
             .'<childArray>'
-            .'<_0>element1</_0>'
-            .'<_1>element2</_1>'
+            .'<childArray>element1</childArray>'
+            .'<childArray>element2</childArray>'
             .'</childArray>'
             .'</array>';
 
@@ -120,8 +120,8 @@ class XmlTest extends TestCase
             .'<testBool>true</testBool>'
             .'</childObject>'
             .'<childArray>'
-            .'<_0>element1</_0>'
-            .'<_1>element2</_1>'
+            .'<childArray>element1</childArray>'
+            .'<childArray>element2</childArray>'
             .'</childArray>'
             .'</testName>';
 
