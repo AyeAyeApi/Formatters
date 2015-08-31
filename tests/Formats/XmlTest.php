@@ -78,8 +78,44 @@ class XmlTest extends TestCase
 
     /**
      * @test
-     * @covers ::format
      * @covers ::parseNonScalarData
+     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Formats\Xml::format
+     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
+     */
+    public function testParseNonScalarData()
+    {
+        $xml = new Xml();
+        $parseNonScalarData = $this->getObjectMethod($xml, 'parseNonScalarData');
+
+        $array = [
+            'element1',
+            'element2'
+        ];
+
+        $expectedXml =
+            '<data>element1</data>'
+            .'<data>element2</data>';
+
+        $this->assertSame(
+            $expectedXml,
+            $parseNonScalarData($array)
+        );
+
+        $expectedXml =
+            '<element>element1</element>'
+            .'<element>element2</element>';
+
+        $this->assertSame(
+            $expectedXml,
+            $parseNonScalarData($array, 'element')
+        );
+    }
+
+    /**
+     * @test
+     * @covers ::format
      * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
      * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
      * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
@@ -97,15 +133,15 @@ class XmlTest extends TestCase
 
         $expectedXml =
             '<array>'
-            .'<childObject>'
-            .'<testString>string</testString>'
-            .'<testBool>true</testBool>'
-            .'</childObject>'
-            .'<childArray>'
-            .'<childArray>element1</childArray>'
-            .'<childArray>element2</childArray>'
-            .'</childArray>'
-            .'</array>';
+            . '<childObject>'
+            . '<testString>string</testString>'
+            . '<testBool>true</testBool>'
+            . '</childObject>'
+            . '<childArray>'
+            . '<childArray>element1</childArray>'
+            . '<childArray>element2</childArray>'
+            . '</childArray>'
+            . '</array>';
 
         $xml = new Xml();
         $this->assertSame(
@@ -115,15 +151,15 @@ class XmlTest extends TestCase
 
         $expectedXml =
             '<testName>'
-            .'<childObject>'
-            .'<testString>string</testString>'
-            .'<testBool>true</testBool>'
-            .'</childObject>'
-            .'<childArray>'
-            .'<childArray>element1</childArray>'
-            .'<childArray>element2</childArray>'
-            .'</childArray>'
-            .'</testName>';
+            . '<childObject>'
+            . '<testString>string</testString>'
+            . '<testBool>true</testBool>'
+            . '</childObject>'
+            . '<childArray>'
+            . '<childArray>element1</childArray>'
+            . '<childArray>element2</childArray>'
+            . '</childArray>'
+            . '</testName>';
 
         $this->assertSame(
             $expectedXml,
