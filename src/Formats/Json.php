@@ -24,8 +24,8 @@ class Json extends Formatter
 
     /**
      * Format part of the data
-     * @param mixed $data
-     * @param string|null $name
+     * @param mixed $data The data to be serialised into json
+     * @param string|null $name Not used for json encoding
      * @return string
      */
     public function format($data, $name = null)

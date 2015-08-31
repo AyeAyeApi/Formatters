@@ -35,7 +35,7 @@ class Jsonp extends Json
     }
 
     /**
-     * Get anything that must come before any data
+     * Returns callback name plus the first part of the wrapper around the data
      * @return string
      */
     public function getHeader()
@@ -44,7 +44,7 @@ class Jsonp extends Json
     }
 
     /**
-     * Get anything that must come after data
+     * Returns the end of the wrapper around the data
      * @return string
      */
     public function getFooter()
