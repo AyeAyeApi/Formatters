@@ -28,7 +28,7 @@ class Jsonp extends Json
      */
     public function __construct($callbackName = null)
     {
-        if($callbackName) {
+        if ($callbackName) {
             // TODO: Test name
             $this->callbackName = $callbackName;
         }

@@ -70,5 +70,4 @@ class JsonpTest extends TestCase
             $jsonp->getFooter()
         );
     }
-
 }

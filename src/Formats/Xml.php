@@ -58,7 +58,7 @@ class Xml extends Formatter
     protected function parseNonScalarData($data, $fallbackName = null)
     {
         $xml = '';
-        if(!$fallbackName) {
+        if (!$fallbackName) {
             $fallbackName = $this->defaultNodeName;
         }
         foreach ($data as $property => $value) {

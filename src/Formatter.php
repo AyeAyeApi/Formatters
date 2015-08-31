@@ -68,21 +68,19 @@ abstract class Formatter
      */
     protected function parseData($data)
     {
-        if(is_scalar($data)) {
+        if (is_scalar($data)) {
             return $data;
         }
 
         if ($data instanceof Serializable) {
             $data = $data->ayeAyeSerialize();
-        }
-        elseif ($data instanceof \JsonSerializable) {
+        } elseif ($data instanceof \JsonSerializable) {
             $data = $data->jsonSerialize();
-        }
-        elseif(!is_array($data)) {
+        } elseif (!is_array($data)) {
             $data = (array)$data;
         }
 
-        foreach($data as $key => $value) {
+        foreach ($data as $key => $value) {
             $data[$key] = $this->parseData($value);
         }
 
