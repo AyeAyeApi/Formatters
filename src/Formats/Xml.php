@@ -39,7 +39,7 @@ class Xml extends Formatter
      * @param string|null $nodeName The node currently being worked on
      * @return string
      */
-    public function format($data, $nodeName = null)
+    public function partialFormat($data, $nodeName = null)
     {
         if (!$nodeName) {
             $nodeName = $this->getNodeName($data);
@@ -101,7 +101,7 @@ class Xml extends Formatter
             if (is_numeric($property)) {
                 $property = $fallbackName;
             }
-            $xml .= $this->format($value, $property);
+            $xml .= $this->partialFormat($value, $property);
         }
         return $xml;
 

@@ -26,10 +26,10 @@ abstract class Formatter
      * @param string|null $name
      * @return string
      */
-    public function fullFormat($data, $name = null)
+    public function format($data, $name = null)
     {
         return $this->getHeader()
-        . $this->format($data, $name)
+        . $this->partialFormat($data, $name)
         . $this->getFooter();
     }
 
@@ -39,7 +39,7 @@ abstract class Formatter
      * @param string|null $name
      * @return string
      */
-    abstract public function format($data, $name = null);
+    abstract public function partialFormat($data, $name = null);
 
     /**
      * Get anything that must come before any data
