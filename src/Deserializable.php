@@ -9,7 +9,7 @@
 namespace AyeAye\Formatter;
 
 /**
- * Interface AyeAyeUnserializable
+ * Interface AyeAyeDeserializable
  * @package AyeAye\Formatter
  */
 interface Deserializable
@@ -17,7 +17,7 @@ interface Deserializable
 
     /**
      * Take data and apply it to a fresh object
-     * @paran array $data
+     * @param array $data
      * @return static
      */
     public static function ayeAyeDeserialize(array $data);

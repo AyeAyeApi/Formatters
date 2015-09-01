@@ -19,7 +19,7 @@ class JsonTest extends TestCase
 {
     /**
      * @test
-     * @covers ::format
+     * @covers ::partialFormat
      * @uses \AyeAye\Formatter\Formatter::parseData
      */
     public function testFormat()
@@ -37,7 +37,7 @@ class JsonTest extends TestCase
         $expectedJson = '{"childObject":{"property":"value"},"childArray":["element1","element2"]}';
         $this->assertJsonStringEqualsJsonString(
             $expectedJson,
-            $json->format($complexObject)
+            $json->partialFormat($complexObject)
         );
     }
 }

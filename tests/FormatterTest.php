@@ -71,7 +71,7 @@ class FormatterTest extends TestCase
 
     /**
      * @test
-     * @covers ::fullFormat
+     * @covers ::format
      * @uses \AyeAye\Formatter\Formatter
      */
     public function testFullFormat()
@@ -79,7 +79,7 @@ class FormatterTest extends TestCase
         $formatter = $this->getFormatter();
         $this->assertSame(
             '',
-            $formatter->fullFormat('data')
+            $formatter->format('data')
         );
     }
 

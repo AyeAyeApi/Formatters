@@ -28,7 +28,7 @@ class Json extends Formatter
      * @param string|null $name Not used for json encoding
      * @return string
      */
-    public function format($data, $name = null)
+    public function partialFormat($data, $name = null)
     {
         return json_encode($this->parseData($data));
     }
