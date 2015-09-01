@@ -80,7 +80,7 @@ class XmlTest extends TestCase
      * @test
      * @covers ::parseNonScalarData
      * @uses \AyeAye\Formatter\Formatter::parseData
-     * @uses \AyeAye\Formatter\Formats\Xml::format
+     * @uses \AyeAye\Formatter\Formats\Xml::partialFormat
      * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
      * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
      */
@@ -115,7 +115,7 @@ class XmlTest extends TestCase
 
     /**
      * @test
-     * @covers ::format
+     * @covers ::partialFormat
      * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
      * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
      * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
@@ -146,7 +146,7 @@ class XmlTest extends TestCase
         $xml = new Xml();
         $this->assertSame(
             $expectedXml,
-            $xml->format($complexObject)
+            $xml->partialFormat($complexObject)
         );
 
         $expectedXml =
@@ -163,7 +163,7 @@ class XmlTest extends TestCase
 
         $this->assertSame(
             $expectedXml,
-            $xml->format($complexObject, 'testName')
+            $xml->partialFormat($complexObject, 'testName')
         );
     }
 }
