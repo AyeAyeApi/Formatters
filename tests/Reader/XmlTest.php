@@ -10,7 +10,7 @@ namespace AyeAye\Formatter\Tests\Reader;
 
 
 use AyeAye\Formatter\Reader\Xml as XmlReader;
-use AyeAye\Formatter\Formats\Xml as XmlWriter;
+use AyeAye\Formatter\Writer\Xml as XmlWriter;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
@@ -26,7 +26,7 @@ class XmlTest extends TestCase
      * @test
      * @covers ::read
      * @uses \AyeAye\Formatter\Reader\Xml::recurseToArray
-     * @uses \AyeAye\Formatter\Formats\Xml
+     * @uses \AyeAye\Formatter\Writer\Xml
      * @uses \AyeAye\Formatter\Formatter
      * @return void
      */

@@ -1,11 +1,11 @@
 <?php
 /**
- * Formats data as xml
+ * Writer data as xml
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Formats;
+namespace AyeAye\Formatter\Writer;
 
 use AyeAye\Formatter\Formatter;
 

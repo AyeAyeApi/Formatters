@@ -5,16 +5,16 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Xml;
+use AyeAye\Formatter\Writer\Xml;
 use AyeAye\Formatter\Tests\TestCase;
 use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
  * Class XmlFormatterTest
  * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Xml
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Xml
  */
 class XmlTest extends TestCase
 {
@@ -80,9 +80,9 @@ class XmlTest extends TestCase
      * @test
      * @covers ::parseNonScalarData
      * @uses \AyeAye\Formatter\Formatter::parseData
-     * @uses \AyeAye\Formatter\Formats\Xml::partialFormat
-     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
-     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
+     * @uses \AyeAye\Formatter\Writer\Xml::partialFormat
+     * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
      */
     public function testParseNonScalarData()
     {
@@ -116,9 +116,9 @@ class XmlTest extends TestCase
     /**
      * @test
      * @covers ::partialFormat
-     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
-     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
-     * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
+     * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
+     * @uses \AyeAye\Formatter\Writer\Xml::parseNonScalarData
      * @uses \AyeAye\Formatter\Formatter::parseData
      */
     public function testFormat()

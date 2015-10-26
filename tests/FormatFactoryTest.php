@@ -8,7 +8,7 @@
 namespace AyeAye\Formatter\Tests;
 
 use AyeAye\Formatter\FormatFactory;
-use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Writer\Json;
 
 /**
  * Class FormatFactoryTest
@@ -45,15 +45,15 @@ class FormatFactoryTest extends TestCase
             'json' => new Json(),
         ]);
         $this->assertInstanceOf(
-            '\AyeAye\Formatter\Formats\Json',
+            '\AyeAye\Formatter\Writer\Json',
             $factory->getFormatterFor('json')
         );
 
         $factory = new FormatFactory([
-            'json' => '\AyeAye\Formatter\Formats\Json',
+            'json' => '\AyeAye\Formatter\Writer\Json',
         ]);
         $this->assertInstanceOf(
-            '\AyeAye\Formatter\Formats\Json',
+            '\AyeAye\Formatter\Writer\Json',
             $factory->getFormatterFor('json')
         );
     }
@@ -83,16 +83,16 @@ class FormatFactoryTest extends TestCase
         ]);
         $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
         $this->assertInstanceOf(
-            '\AyeAye\Formatter\Formats\Json',
+            '\AyeAye\Formatter\Writer\Json',
             $getSpecificFormatterFor('json')
         );
 
         $factory = new FormatFactory([
-            'json' => '\AyeAye\Formatter\Formats\Json',
+            'json' => '\AyeAye\Formatter\Writer\Json',
         ]);
         $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
         $this->assertInstanceOf(
-            '\AyeAye\Formatter\Formats\Json',
+            '\AyeAye\Formatter\Writer\Json',
             $getSpecificFormatterFor('json')
         );
     }

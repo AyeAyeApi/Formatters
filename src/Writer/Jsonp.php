@@ -1,11 +1,11 @@
 <?php
 /**
- * Formats data as json
+ * Writer data as json
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Formats;
+namespace AyeAye\Formatter\Writer;
 
 class Jsonp extends Json
 {

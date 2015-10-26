@@ -1,6 +1,6 @@
 <?php
 /**
- * Turn suffix's into Formats
+ * Turn suffix's into Writer
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */

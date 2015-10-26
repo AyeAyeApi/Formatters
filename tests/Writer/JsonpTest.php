@@ -5,15 +5,15 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Jsonp;
+use AyeAye\Formatter\Writer\Jsonp;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class JsonpFormatterTest
  * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Jsonp
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Jsonp
  */
 class JsonpTest extends TestCase
 {
@@ -40,7 +40,7 @@ class JsonpTest extends TestCase
     /**
      * @test
      * @covers ::getHeader
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     * @uses \AyeAye\Formatter\Writer\Jsonp::__construct
      */
     public function testGetHeader()
     {
@@ -60,7 +60,7 @@ class JsonpTest extends TestCase
     /**
      * @test
      * @covers ::getFooter
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     * @uses \AyeAye\Formatter\Writer\Jsonp::__construct
      */
     public function testGetFooter()
     {
@@ -69,5 +69,4 @@ class JsonpTest extends TestCase
             "');",
             $jsonp->getFooter()
         );
-    }
-}
+    }}

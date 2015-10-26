@@ -5,15 +5,15 @@
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Writer\Json;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class JsonFormatterTest
  * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Json
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Json
  */
 class JsonTest extends TestCase
 {

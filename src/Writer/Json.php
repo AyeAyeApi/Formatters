@@ -1,17 +1,17 @@
 <?php
 /**
- * Formats data as json
+ * Writer data as json
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Formats;
+namespace AyeAye\Formatter\Writer;
 
 use AyeAye\Formatter\Formatter;
 
 /**
  * Class Json
- * @package AyeAye\Formatter\Formats
+ * @package AyeAye\Formatter\Writer
  */
 class Json extends Formatter
 {
