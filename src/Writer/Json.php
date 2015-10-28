@@ -1,8 +1,10 @@
 <?php
 /**
- * Writer data as json
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * Json.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Writer;
@@ -11,7 +13,9 @@ use AyeAye\Formatter\Formatter;
 
 /**
  * Class Json
- * @package AyeAye\Formatter\Writer
+ * Write data as a Json formatted string
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 class Json extends Formatter
 {

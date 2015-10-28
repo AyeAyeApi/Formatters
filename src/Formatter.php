@@ -1,12 +1,20 @@
 <?php
 /**
- * Format data before sending it to client
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * Formatter.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter;
 
+/**
+ * Abstract Class Formatter
+ * The basics of turning data into a formatted string
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
+ */
 abstract class Formatter
 {
 

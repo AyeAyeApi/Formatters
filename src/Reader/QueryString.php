@@ -1,26 +1,29 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 09/10/2015
- * Time: 08:40
+ * QueryString.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Reader;
-
 
 use AyeAye\Formatter\Reader;
 
 /**
  * Class QueryString
- * @package AyeAye\Formatter\Reader
+ * Read a query string and turn it into an array.
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 class QueryString implements Reader
 {
 
     /**
+     * Read a json string
      * @param $string
-     * @return null|array
+     * @return array|null
      */
     public function read($string)
     {

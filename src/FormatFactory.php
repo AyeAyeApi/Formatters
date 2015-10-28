@@ -1,12 +1,20 @@
 <?php
 /**
- * Turn suffix's into Writer
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * FormatFactory.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter;
 
+/**
+ * Class FormatFactory
+ * Mediate between a set of writers to choose the right one
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
+ */
 class FormatFactory
 {
 
