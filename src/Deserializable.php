@@ -20,8 +20,8 @@ interface Deserializable
 
     /**
      * Take data and apply it to a fresh object
-     * @param array $data
+     * @param mixed $data
      * @return static
      */
-    public static function ayeAyeDeserialize(array $data);
+    public static function ayeAyeDeserialize($data);
 }
