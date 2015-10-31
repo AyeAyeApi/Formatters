@@ -14,8 +14,8 @@ use AyeAye\Formatter\Tests\TestCase;
  * Class JsonTest
  * Test the Json Formatter
  * @package AyeAye\Formatter
- * @coversDefaultClass \AyeAye\Formatter\Writer\Json
  * @see https://github.com/AyeAyeApi/Formatters
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Json
  */
 class JsonTest extends TestCase
 {

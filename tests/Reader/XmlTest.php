@@ -1,10 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 13/10/2015
- * Time: 08:42
+ * XmlTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
+
 
 namespace AyeAye\Formatter\Tests\Reader;
 
@@ -15,8 +17,9 @@ use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class XmlTest
- * @package ${PROJECT_NAME}
- * @see     https://github.com/AyeAyeApi/Api
+ * Test the Xml Reader
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Reader\Xml
  */
 class XmlTest extends TestCase

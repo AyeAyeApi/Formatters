@@ -18,6 +18,7 @@ use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
  * Tests for the formatter abstract class
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
+ * @coversDefaultClass \AyeAye\Formatter\Formatter
  */
 class FormatterTest extends TestCase
 {
