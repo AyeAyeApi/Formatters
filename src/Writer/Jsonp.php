@@ -9,7 +9,7 @@
 
 namespace AyeAye\Formatter\Writer;
 
-use AyeAye\Formatter\Formatter;
+use AyeAye\Formatter\Writer;
 
 /**
  * Class Jsonp

@@ -30,7 +30,7 @@ class XmlTest extends TestCase
      * @covers ::read
      * @uses \AyeAye\Formatter\Reader\Xml::recurseToArray
      * @uses \AyeAye\Formatter\Writer\Xml
-     * @uses \AyeAye\Formatter\Formatter
+     * @uses \AyeAye\Formatter\Writer
      * @return void
      */
     public function testRead()

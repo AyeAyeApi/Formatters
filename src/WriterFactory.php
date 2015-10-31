@@ -15,7 +15,7 @@ namespace AyeAye\Formatter;
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
  */
-class FormatFactory
+class WriterFactory
 {
 
     protected $formats;
@@ -27,7 +27,7 @@ class FormatFactory
 
     /**
      * @param string|array $formats
-     * @return Formatter
+     * @return Writer
      * @throws \Exception
      */
     public function getFormatterFor($formats)
@@ -48,7 +48,7 @@ class FormatFactory
 
     /**
      * @param string $format
-     * @return null|Formatter
+     * @return null|Writer
      * @throws \Exception
      */
     protected function getSpecificFormatterFor($format)
@@ -60,7 +60,7 @@ class FormatFactory
             } elseif (is_string($this->formats[$format]) && class_exists($this->formats[$format])) {
                 $formatter = new $this->formats[$format]();
             }
-            if (!$formatter instanceof Formatter) {
+            if (!$formatter instanceof Writer) {
                 throw new \Exception("Formatter for '$format' not a Formatter object or class");
             }
         }

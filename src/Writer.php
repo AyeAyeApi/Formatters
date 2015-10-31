@@ -1,6 +1,6 @@
 <?php
 /**
- * Formatter.php
+ * Writer.php
  * @author    Daniel Mason <daniel@danielmason.com>
  * @copyright 2015 Daniel Mason
  * @license   GPL 3
@@ -10,12 +10,12 @@
 namespace AyeAye\Formatter;
 
 /**
- * Abstract Class Formatter
+ * Abstract Class Writer
  * The basics of turning data into a formatted string
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
  */
-abstract class Formatter
+abstract class Writer
 {
 
     protected $contentType = 'text/plain';

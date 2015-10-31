@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatterTest.php
+ * WriterTest.php
  * @author    Daniel Mason <daniel@danielmason.com>
  * @copyright 2015 Daniel Mason
  * @license   GPL 3
@@ -9,29 +9,29 @@
 
 namespace AyeAye\Formatter\Tests;
 
-use AyeAye\Formatter\Formatter;
+use AyeAye\Formatter\Writer;
 use AyeAye\Formatter\Tests\TestClasses\AyeAyeSerializableClass;
 use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
- * Class FormatterTest
- * Tests for the formatter abstract class
+ * Class WriterTest
+ * Tests for the writer abstract class
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
- * @coversDefaultClass \AyeAye\Formatter\Formatter
+ * @coversDefaultClass \AyeAye\Formatter\Writer
  */
-class FormatterTest extends TestCase
+class WriterTest extends TestCase
 {
     /**
-     * @return Formatter|\PHPUnit_Framework_MockObject_MockObject
+     * @return Writer|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected function getFormatter()
+    protected function getWriter()
     {
-        $formatter = $this->getMockForAbstractClass('\AyeAye\Formatter\Formatter');
-        $formatter->expects($this->any())
+        $writer = $this->getMockForAbstractClass('\AyeAye\Formatter\Writer');
+        $writer->expects($this->any())
             ->method('format')
             ->will($this->returnValue(''));
-        return $formatter;
+        return $writer;
     }
 
     /**
@@ -40,10 +40,10 @@ class FormatterTest extends TestCase
      */
     public function testGetContentType()
     {
-        $formatter = $this->getFormatter();
+        $writer = $this->getWriter();
         $this->assertSame(
             'text/plain',
-            $formatter->getContentType()
+            $writer->getContentType()
         );
     }
 
@@ -53,10 +53,10 @@ class FormatterTest extends TestCase
      */
     public function testGetHeader()
     {
-        $formatter = $this->getFormatter();
+        $writer = $this->getWriter();
         $this->assertSame(
             '',
-            $formatter->getHeader()
+            $writer->getHeader()
         );
     }
 
@@ -66,24 +66,24 @@ class FormatterTest extends TestCase
      */
     public function testGetFooter()
     {
-        $formatter = $this->getFormatter();
+        $writer = $this->getWriter();
         $this->assertSame(
             '',
-            $formatter->getFooter()
+            $writer->getFooter()
         );
     }
 
     /**
      * @test
      * @covers ::format
-     * @uses \AyeAye\Formatter\Formatter
+     * @uses \AyeAye\Formatter\Writer
      */
     public function testFullFormat()
     {
-        $formatter = $this->getFormatter();
+        $writer = $this->getWriter();
         $this->assertSame(
             '',
-            $formatter->format('data')
+            $writer->format('data')
         );
     }
 
@@ -93,8 +93,8 @@ class FormatterTest extends TestCase
      */
     public function testParseData()
     {
-        $formatter = $this->getFormatter();
-        $parseData = $this->getObjectMethod($formatter, 'parseData');
+        $writer = $this->getWriter();
+        $parseData = $this->getObjectMethod($writer, 'parseData');
 
         // Scalar
         $data = 'test';

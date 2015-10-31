@@ -15,7 +15,7 @@ use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
  * Class XmlTest
- * Test the Xml Formatter
+ * Test the Xml Writer
  * @package AyeAye\Formatter
  * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Writer\Xml
@@ -83,7 +83,7 @@ class XmlTest extends TestCase
     /**
      * @test
      * @covers ::parseNonScalarData
-     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Writer::parseData
      * @uses \AyeAye\Formatter\Writer\Xml::partialFormat
      * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
      * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
@@ -123,7 +123,7 @@ class XmlTest extends TestCase
      * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
      * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
      * @uses \AyeAye\Formatter\Writer\Xml::parseNonScalarData
-     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Writer::parseData
      */
     public function testFormat()
     {

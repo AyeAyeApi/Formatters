@@ -22,7 +22,7 @@ class JsonTest extends TestCase
     /**
      * @test
      * @covers ::partialFormat
-     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Writer::parseData
      */
     public function testFormat()
     {

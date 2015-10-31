@@ -15,7 +15,7 @@ use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class JsonpTest
- * Test the Jsonp Formatter
+ * Test the Jsonp Writer
  * @package AyeAye\Formatter
  * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Writer\Jsonp

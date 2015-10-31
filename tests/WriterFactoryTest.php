@@ -1,6 +1,6 @@
 <?php
 /**
- * FormatFactoryTest.php
+ * WriterFactoryTest.php
  * @author    Daniel Mason <daniel@danielmason.com>
  * @copyright 2015 Daniel Mason
  * @license   GPL 3
@@ -9,17 +9,17 @@
 
 namespace AyeAye\Formatter\Tests;
 
-use AyeAye\Formatter\FormatFactory;
+use AyeAye\Formatter\WriterFactory;
 use AyeAye\Formatter\Writer\Json;
 
 /**
- * Class FormatFactoryTest
+ * Class WriterFactoryTest
  * Test the format factory
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
- * @coversDefaultClass \AyeAye\Formatter\FormatFactory
+ * @coversDefaultClass \AyeAye\Formatter\WriterFactory
  */
-class FormatFactoryTest extends TestCase
+class WriterFactoryTest extends TestCase
 {
 
     /**
@@ -31,21 +31,21 @@ class FormatFactoryTest extends TestCase
         $formats = [
             'test' => new Json()
         ];
-        $formatFactory = new FormatFactory($formats);
+        $writerFactory = new WriterFactory($formats);
         $this->assertSame(
             $formats,
-            $this->getObjectAttribute($formatFactory, 'formats')
+            $this->getObjectAttribute($writerFactory, 'formats')
         );
     }
 
     /**
      * @test
      * @covers ::getFormatterFor
-     * @uses \AyeAye\Formatter\FormatFactory
+     * @uses \AyeAye\Formatter\WriterFactory
      */
     public function testGetFormatterFor()
     {
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => new Json(),
         ]);
         $this->assertInstanceOf(
@@ -53,7 +53,7 @@ class FormatFactoryTest extends TestCase
             $factory->getFormatterFor('json')
         );
 
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => '\AyeAye\Formatter\Writer\Json',
         ]);
         $this->assertInstanceOf(
@@ -65,24 +65,24 @@ class FormatFactoryTest extends TestCase
     /**
      * @test
      * @covers ::getFormatterFor
-     * @uses \AyeAye\Formatter\FormatFactory
+     * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
      * @expectedExceptionMessage Formatter not found
      */
     public function testInvalidExtensionException()
     {
-        $factory = new FormatFactory([]);
+        $factory = new WriterFactory([]);
         $factory->getFormatterFor('json');
     }
 
     /**
      * @test
      * @covers ::getSpecificFormatterFor
-     * @uses \AyeAye\Formatter\FormatFactory
+     * @uses \AyeAye\Formatter\WriterFactory
      */
     public function testGetSpecificFormatterFor()
     {
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => new Json(),
         ]);
         $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
@@ -91,7 +91,7 @@ class FormatFactoryTest extends TestCase
             $getSpecificFormatterFor('json')
         );
 
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => '\AyeAye\Formatter\Writer\Json',
         ]);
         $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
@@ -104,13 +104,13 @@ class FormatFactoryTest extends TestCase
     /**
      * @test
      * @covers ::getSpecificFormatterFor
-     * @uses \AyeAye\Formatter\FormatFactory
+     * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
      * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
      */
     public function testGetSpecificFormatterForNonFormatClassException()
     {
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => new \stdClass(),
         ]);
         $factory->getFormatterFor('json');
@@ -119,13 +119,13 @@ class FormatFactoryTest extends TestCase
     /**
      * @test
      * @covers ::getSpecificFormatterFor
-     * @uses \AyeAye\Formatter\FormatFactory
+     * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
      * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
      */
     public function testGetSpecificFormatterForInvalidClassException()
     {
-        $factory = new FormatFactory([
+        $factory = new WriterFactory([
             'json' => 'this-is-an-invalid-class-name',
         ]);
         $factory->getFormatterFor('json');

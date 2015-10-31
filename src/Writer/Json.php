@@ -9,7 +9,7 @@
 
 namespace AyeAye\Formatter\Writer;
 
-use AyeAye\Formatter\Formatter;
+use AyeAye\Formatter\Writer;
 
 /**
  * Class Json
@@ -17,7 +17,7 @@ use AyeAye\Formatter\Formatter;
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
  */
-class Json extends Formatter
+class Json extends Writer
 {
 
     /**
