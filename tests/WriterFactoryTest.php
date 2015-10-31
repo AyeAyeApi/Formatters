@@ -40,17 +40,17 @@ class WriterFactoryTest extends TestCase
 
     /**
      * @test
-     * @covers ::getFormatterFor
+     * @covers ::getWriterFor
      * @uses \AyeAye\Formatter\WriterFactory
      */
-    public function testGetFormatterFor()
+    public function testGetWriterFor()
     {
         $factory = new WriterFactory([
             'json' => new Json(),
         ]);
         $this->assertInstanceOf(
             '\AyeAye\Formatter\Writer\Json',
-            $factory->getFormatterFor('json')
+            $factory->getWriterFor('json')
         );
 
         $factory = new WriterFactory([
@@ -58,76 +58,76 @@ class WriterFactoryTest extends TestCase
         ]);
         $this->assertInstanceOf(
             '\AyeAye\Formatter\Writer\Json',
-            $factory->getFormatterFor('json')
+            $factory->getWriterFor('json')
         );
     }
 
     /**
      * @test
-     * @covers ::getFormatterFor
+     * @covers ::getWriterFor
      * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
-     * @expectedExceptionMessage Formatter not found
+     * @expectedExceptionMessage Writer not found
      */
     public function testInvalidExtensionException()
     {
         $factory = new WriterFactory([]);
-        $factory->getFormatterFor('json');
+        $factory->getWriterFor('json');
     }
 
     /**
      * @test
-     * @covers ::getSpecificFormatterFor
+     * @covers ::getSpecificWriterFor
      * @uses \AyeAye\Formatter\WriterFactory
      */
-    public function testGetSpecificFormatterFor()
+    public function testGetSpecificWriterFor()
     {
         $factory = new WriterFactory([
             'json' => new Json(),
         ]);
-        $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
+        $getSpecificWriterFor = $this->getObjectMethod($factory, 'getSpecificWriterFor');
         $this->assertInstanceOf(
             '\AyeAye\Formatter\Writer\Json',
-            $getSpecificFormatterFor('json')
+            $getSpecificWriterFor('json')
         );
 
         $factory = new WriterFactory([
             'json' => '\AyeAye\Formatter\Writer\Json',
         ]);
-        $getSpecificFormatterFor = $this->getObjectMethod($factory, 'getSpecificFormatterFor');
+        $getSpecificWriterFor = $this->getObjectMethod($factory, 'getSpecificWriterFor');
         $this->assertInstanceOf(
             '\AyeAye\Formatter\Writer\Json',
-            $getSpecificFormatterFor('json')
+            $getSpecificWriterFor('json')
         );
     }
 
     /**
      * @test
-     * @covers ::getSpecificFormatterFor
+     * @covers ::getSpecificWriterFor
      * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
-     * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
+     * @expectedExceptionMessage Writer for 'json' not a Writer object or class
      */
-    public function testGetSpecificFormatterForNonFormatClassException()
+    public function testGetSpecificWriterForNonFormatClassException()
     {
         $factory = new WriterFactory([
             'json' => new \stdClass(),
         ]);
-        $factory->getFormatterFor('json');
+        $factory->getWriterFor('json');
     }
 
     /**
      * @test
-     * @covers ::getSpecificFormatterFor
+     * @covers ::getSpecificWriterFor
      * @uses \AyeAye\Formatter\WriterFactory
      * @expectedException        \Exception
-     * @expectedExceptionMessage Formatter for 'json' not a Formatter object or class
+     * @expectedExceptionMessage Writer for 'json' not a Writer object or class
      */
-    public function testGetSpecificFormatterForInvalidClassException()
+    public function testGetSpecificWriterForInvalidClassException()
     {
         $factory = new WriterFactory([
             'json' => 'this-is-an-invalid-class-name',
         ]);
-        $factory->getFormatterFor('json');
+        $factory->getWriterFor('json');
     }
 }

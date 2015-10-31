@@ -30,20 +30,20 @@ class WriterFactory
      * @return Writer
      * @throws \Exception
      */
-    public function getFormatterFor($formats)
+    public function getWriterFor($formats)
     {
         // Make an array
         if (is_scalar($formats)) {
             $formats = [$formats];
         }
 
-        // For each provided suffix, see if we have a formatter for it
+        // For each provided suffix, see if we have a writer for it
         foreach ($formats as $format) {
-            if ($formatter = $this->getSpecificFormatterFor($format)) {
-                return $formatter;
+            if ($writer = $this->getSpecificWriterFor($format)) {
+                return $writer;
             }
         }
-        throw new \Exception("Formatter not found");
+        throw new \Exception("Writer not found");
     }
 
     /**
@@ -51,19 +51,19 @@ class WriterFactory
      * @return null|Writer
      * @throws \Exception
      */
-    protected function getSpecificFormatterFor($format)
+    protected function getSpecificWriterFor($format)
     {
-        $formatter = null;
+        $writer = null;
         if (array_key_exists($format, $this->formats)) {
             if (is_object($this->formats[$format])) {
-                $formatter = $this->formats[$format];
+                $writer = $this->formats[$format];
             } elseif (is_string($this->formats[$format]) && class_exists($this->formats[$format])) {
-                $formatter = new $this->formats[$format]();
+                $writer = new $this->formats[$format]();
             }
-            if (!$formatter instanceof Writer) {
-                throw new \Exception("Formatter for '$format' not a Formatter object or class");
+            if (!$writer instanceof Writer) {
+                throw new \Exception("Writer for '$format' not a Writer object or class");
             }
         }
-        return $formatter;
+        return $writer;
     }
 }
