@@ -1,8 +1,10 @@
 <?php
 /**
- * Test the Json Formatter
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * XmlTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Tests\Writer;
@@ -12,8 +14,10 @@ use AyeAye\Formatter\Tests\TestCase;
 use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
- * Class XmlFormatterTest
- * @package AyeAye\Formatter\Tests
+ * Class XmlTest
+ * Test the Xml Formatter
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Writer\Xml
  */
 class XmlTest extends TestCase

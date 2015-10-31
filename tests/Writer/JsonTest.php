@@ -1,6 +1,6 @@
 <?php
 /**
- * Test the Json Formatter
+ *
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */
@@ -11,9 +11,11 @@ use AyeAye\Formatter\Writer\Json;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
- * Class JsonFormatterTest
- * @package AyeAye\Formatter\Tests
+ * Class JsonTest
+ * Test the Json Formatter
+ * @package AyeAye\Formatter
  * @coversDefaultClass \AyeAye\Formatter\Writer\Json
+ * @see https://github.com/AyeAyeApi/Formatters
  */
 class JsonTest extends TestCase
 {

@@ -1,8 +1,10 @@
 <?php
 /**
- * Test the Formatter Factory
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * FormatterTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Tests;
@@ -13,8 +15,9 @@ use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
  * Class FormatterTest
- * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formatter
+ * Tests for the formatter abstract class
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 class FormatterTest extends TestCase
 {

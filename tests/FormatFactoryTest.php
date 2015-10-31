@@ -1,8 +1,10 @@
 <?php
 /**
- * Test the Formatter Factory
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * FormatFactoryTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Tests;
@@ -12,8 +14,9 @@ use AyeAye\Formatter\Writer\Json;
 
 /**
  * Class FormatFactoryTest
- * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\FormatFactory
+ * Test the format factory
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 class FormatFactoryTest extends TestCase
 {
