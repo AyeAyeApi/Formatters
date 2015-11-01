@@ -1,12 +1,22 @@
 <?php
 /**
- * Writer data as json
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * Jsonp.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Writer;
 
+use AyeAye\Formatter\Writer;
+
+/**
+ * Class Jsonp
+ * Write data as a Json formatted string inside a javascript callback
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
+ */
 class Jsonp extends Json
 {
 

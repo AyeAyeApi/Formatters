@@ -1,8 +1,11 @@
 <?php
 /**
- * Test the Json Formatter
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * JsonpTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Tests\Writer;
@@ -11,8 +14,10 @@ use AyeAye\Formatter\Writer\Jsonp;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
- * Class JsonpFormatterTest
- * @package AyeAye\Formatter\Tests
+ * Class JsonpTest
+ * Test the Jsonp Writer
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Writer\Jsonp
  */
 class JsonpTest extends TestCase
@@ -69,4 +74,5 @@ class JsonpTest extends TestCase
             "');",
             $jsonp->getFooter()
         );
-    }}
+    }
+}

@@ -1,22 +1,22 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 13/10/2015
- * Time: 08:37
+ * QueryStringTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Tests\Reader;
-
 
 use AyeAye\Formatter\Reader\QueryString;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class QueryStringTest
- *
+ * Test the Query String Reader
  * @package AyeAye/Foratters
- * @see     https://github.com/AyeAyeApi/Api
+ * @see     https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass AyeAye\Formatter\Reader\QueryString
  */
 class QueryStringTest extends TestCase

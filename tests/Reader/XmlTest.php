@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 13/10/2015
- * Time: 08:42
+ * XmlTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
-namespace AyeAye\Formatter\Tests\Reader;
 
+namespace AyeAye\Formatter\Tests\Reader;
 
 use AyeAye\Formatter\Reader\Xml as XmlReader;
 use AyeAye\Formatter\Writer\Xml as XmlWriter;
@@ -15,8 +16,9 @@ use AyeAye\Formatter\Tests\TestCase;
 
 /**
  * Class XmlTest
- * @package ${PROJECT_NAME}
- * @see     https://github.com/AyeAyeApi/Api
+ * Test the Xml Reader
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\Reader\Xml
  */
 class XmlTest extends TestCase
@@ -27,7 +29,7 @@ class XmlTest extends TestCase
      * @covers ::read
      * @uses \AyeAye\Formatter\Reader\Xml::recurseToArray
      * @uses \AyeAye\Formatter\Writer\Xml
-     * @uses \AyeAye\Formatter\Formatter
+     * @uses \AyeAye\Formatter\Writer
      * @return void
      */
     public function testRead()

@@ -1,16 +1,19 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 09/10/2015
- * Time: 08:29
+ * Reader.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter;
 
 /**
- * Class Reader
- * @package AyeAye\Formatter
+ * Interface Reader
+ * Read a formatted string and turn it back into data
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 interface Reader
 {
@@ -20,5 +23,4 @@ interface Reader
      * @return array
      */
     public function read($string);
-
 }

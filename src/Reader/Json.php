@@ -1,19 +1,21 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 09/10/2015
- * Time: 08:36
+ * Json.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Reader;
-
 
 use AyeAye\Formatter\Reader;
 
 /**
  * Class Json
- * @package AyeAye\Formatter\Reader
+ * Read a Json formatted string and turn it into an array.
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
  */
 class Json implements Reader
 {
@@ -21,11 +23,10 @@ class Json implements Reader
     /**
      * Attempt to read a json string
      * @param $string
-     * @return object|bool|null
+     * @return array|null
      */
     public function read($string)
     {
         return json_decode($string, true);
     }
-
 }

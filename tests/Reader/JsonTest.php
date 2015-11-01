@@ -1,13 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 13/10/2015
- * Time: 08:36
+ * JsonTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
-
 namespace AyeAye\Formatter\Tests\Reader;
-
 
 use AyeAye\Formatter\Reader\Json;
 use AyeAye\Formatter\Tests\TestCase;
@@ -16,7 +15,7 @@ use AyeAye\Formatter\Tests\TestCase;
  * Class JsonTest
  * Tests the Json reader
  * @package AyeAye/Formatters
- * @see     https://github.com/AyeAyeApi/Api
+ * @see     https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass AyeAye\Formatter\Reader\Json
  */
 class JsonTest extends TestCase

@@ -1,15 +1,23 @@
 <?php
 /**
- * Writer data as xml
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * Xml.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Writer;
 
-use AyeAye\Formatter\Formatter;
+use AyeAye\Formatter\Writer;
 
-class Xml extends Formatter
+/**
+ * Class Xml
+ * Write data as an Xml formatted string
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
+ */
+class Xml extends Writer
 {
 
     /**

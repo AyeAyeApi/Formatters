@@ -1,23 +1,30 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Daniel
- * Date: 09/10/2015
- * Time: 08:31
+ * Xml.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
 namespace AyeAye\Formatter\Reader;
 
-
 use AyeAye\Formatter\Reader;
 
+/**
+ * Class Xml
+ * Read an Xml formatted string and turn it into an array.
+ * Note: repeated elements which are perfectly valid will overwrite previous elements with this reader
+ * @package AyeAye/Formatters
+ * @see     https://github.com/AyeAyeApi/Formatters
+ */
 class Xml implements Reader
 {
 
     /**
-     * Attempt to read an XML docuent
+     * Attempt to read an XML document
      * @param string $string
-     * @return null|\SimpleXMLElement
+     * @return array|null
      */
     public function read($string)
     {
@@ -35,26 +42,22 @@ class Xml implements Reader
     }
 
     /**
+     * Recurse through non scalars turning them into arrays, just returns scalars as is.
      * @param $object
-     * @return array
+     * @return mixed
      */
     protected function recurseToArray($object)
     {
-        if(is_scalar($object)) {
+        if (is_scalar($object)) {
             return $object;
         }
         $array = (array)$object;
-        foreach($array as &$value) {
-            if(!is_scalar(($value))) {
-//                if($value instanceof \SimpleXMLElement) {
-//                    $value = $this->recurseToArray($value);
-//                    continue;
-//                }
+        foreach ($array as &$value) {
+            if (!is_scalar(($value))) {
                 $value = $this->recurseToArray($value);
                 continue;
             }
         }
         return $array;
     }
-
 }
