@@ -14,7 +14,7 @@ use AyeAye\Formatter\Writer\Json;
 
 /**
  * Class WriterFactoryTest
- * Test the format factory
+ * Test the writer factory
  * @package AyeAye/Formatters
  * @see     https://github.com/AyeAyeApi/Formatters
  * @coversDefaultClass \AyeAye\Formatter\WriterFactory
