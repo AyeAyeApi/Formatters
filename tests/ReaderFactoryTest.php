@@ -136,5 +136,4 @@ class ReaderFactoryTest extends TestCase
             $readerFactory->read($testString)
         );
     }
-
 }

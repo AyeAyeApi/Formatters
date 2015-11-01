@@ -8,7 +8,6 @@
  */
 namespace AyeAye\Formatter\Tests\Reader;
 
-
 use AyeAye\Formatter\Reader\Json;
 use AyeAye\Formatter\Tests\TestCase;
 

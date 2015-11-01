@@ -9,7 +9,6 @@
 
 namespace AyeAye\Formatter\Tests\Reader;
 
-
 use AyeAye\Formatter\Reader\QueryString;
 use AyeAye\Formatter\Tests\TestCase;
 

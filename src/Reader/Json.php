@@ -29,5 +29,4 @@ class Json implements Reader
     {
         return json_decode($string, true);
     }
-
 }

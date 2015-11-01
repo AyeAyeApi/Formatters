@@ -31,5 +31,4 @@ class QueryString implements Reader
         parse_str($string, $array);
         return $array;
     }
-
 }

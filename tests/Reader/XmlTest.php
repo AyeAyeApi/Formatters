@@ -10,7 +10,6 @@
 
 namespace AyeAye\Formatter\Tests\Reader;
 
-
 use AyeAye\Formatter\Reader\Xml as XmlReader;
 use AyeAye\Formatter\Writer\Xml as XmlWriter;
 use AyeAye\Formatter\Tests\TestCase;

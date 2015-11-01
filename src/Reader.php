@@ -23,5 +23,4 @@ interface Reader
      * @return array
      */
     public function read($string);
-
 }

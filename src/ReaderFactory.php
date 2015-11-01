@@ -9,7 +9,6 @@
 
 namespace AyeAye\Formatter;
 
-
 /**
  * Interface Reader
  * Read a formatted string and turn it back into data
@@ -29,7 +28,7 @@ class ReaderFactory implements Reader
      */
     public function __construct(array $readers = [])
     {
-        foreach($readers as $reader) {
+        foreach ($readers as $reader) {
             $this->addReader($reader);
         }
     }
@@ -50,14 +49,12 @@ class ReaderFactory implements Reader
      */
     public function read($string)
     {
-        foreach($this->readers as $reader) {
+        foreach ($this->readers as $reader) {
             $result = $reader->read($string);
-            if($result) {
+            if ($result) {
                 return $result;
             }
         }
         return null;
     }
-
-
 }

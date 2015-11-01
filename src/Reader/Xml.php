@@ -48,17 +48,16 @@ class Xml implements Reader
      */
     protected function recurseToArray($object)
     {
-        if(is_scalar($object)) {
+        if (is_scalar($object)) {
             return $object;
         }
         $array = (array)$object;
-        foreach($array as &$value) {
-            if(!is_scalar(($value))) {
+        foreach ($array as &$value) {
+            if (!is_scalar(($value))) {
                 $value = $this->recurseToArray($value);
                 continue;
             }
         }
         return $array;
     }
-
 }
