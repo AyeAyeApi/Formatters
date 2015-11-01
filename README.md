@@ -16,7 +16,7 @@ Travis CI: [![Build Status](https://travis-ci.org/AyeAyeApi/Formatters.svg?branc
 To format data into any specific serialised data format, just instantiate the formatter and pass it the data.
 
 ```php
-use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Writer\Json;
 
 $data = ['boolean' => true];
 
@@ -28,7 +28,7 @@ The fullFormat method always assumes you want a valid file output. If you want o
  `partialFormat()` method. For example:
 
 ```php
-use AyeAye\Formatter\Formats\Xml;
+use AyeAye\Formatter\Writer\Xml;
 
 $data = ['boolean' => true];
 
@@ -44,11 +44,11 @@ The above functionality isn't particularly useful on it's own, that's where the 
 
 ```php
 use AyeAye\Formatter\FormatFactory;
-use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Writer\Json;
 
 $formatFactory = new FormatFactory([
     'json' => new Json(),                    // Instantiate
-    'xml' => 'AyeAye\Formatter\Formats\Xml', // or don't
+    'xml' => 'AyeAye\Formatter\Writer\Xml', // or don't
 ]);
 
 $formatFactory->getFormatterFor('json'); // returns the same Json instance every time.
@@ -62,8 +62,8 @@ More importantly you can request a formatter using an array of possible formats.
  
 ```php
 use AyeAye\Formatter\FormatFactory;
-use AyeAye\Formatter\Formats\Json;
-use AyeAye\Formatter\Formats\Xml;
+use AyeAye\Formatter\Writer\Json;
+use AyeAye\Formatter\Writer\Xml;
 
 $xmlFormatter = new Xml();
 $jsonFormatter = new Json();

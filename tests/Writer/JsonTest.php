@@ -1,26 +1,28 @@
 <?php
 /**
- * Test the Json Formatter
+ *
  * @author Daniel Mason
  * @copyright Daniel Mason, 2014
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Json;
+use AyeAye\Formatter\Writer\Json;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
- * Class JsonFormatterTest
- * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Json
+ * Class JsonTest
+ * Test the Json Formatter
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Json
  */
 class JsonTest extends TestCase
 {
     /**
      * @test
      * @covers ::partialFormat
-     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Writer::parseData
      */
     public function testFormat()
     {

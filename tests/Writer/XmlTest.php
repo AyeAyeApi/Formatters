@@ -1,20 +1,24 @@
 <?php
 /**
- * Test the Json Formatter
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * XmlTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Xml;
+use AyeAye\Formatter\Writer\Xml;
 use AyeAye\Formatter\Tests\TestCase;
 use AyeAye\Formatter\Tests\TestClasses\JsonSerializableClass;
 
 /**
- * Class XmlFormatterTest
- * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Xml
+ * Class XmlTest
+ * Test the Xml Writer
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Xml
  */
 class XmlTest extends TestCase
 {
@@ -79,10 +83,10 @@ class XmlTest extends TestCase
     /**
      * @test
      * @covers ::parseNonScalarData
-     * @uses \AyeAye\Formatter\Formatter::parseData
-     * @uses \AyeAye\Formatter\Formats\Xml::partialFormat
-     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
-     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
+     * @uses \AyeAye\Formatter\Writer::parseData
+     * @uses \AyeAye\Formatter\Writer\Xml::partialFormat
+     * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
      */
     public function testParseNonScalarData()
     {
@@ -116,10 +120,10 @@ class XmlTest extends TestCase
     /**
      * @test
      * @covers ::partialFormat
-     * @uses \AyeAye\Formatter\Formats\Xml::getNodeName
-     * @uses \AyeAye\Formatter\Formats\Xml::parseScalarData
-     * @uses \AyeAye\Formatter\Formats\Xml::parseNonScalarData
-     * @uses \AyeAye\Formatter\Formatter::parseData
+     * @uses \AyeAye\Formatter\Writer\Xml::getNodeName
+     * @uses \AyeAye\Formatter\Writer\Xml::parseScalarData
+     * @uses \AyeAye\Formatter\Writer\Xml::parseNonScalarData
+     * @uses \AyeAye\Formatter\Writer::parseData
      */
     public function testFormat()
     {

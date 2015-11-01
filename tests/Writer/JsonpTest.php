@@ -1,19 +1,24 @@
 <?php
 /**
- * Test the Json Formatter
- * @author Daniel Mason
- * @copyright Daniel Mason, 2014
+ * JsonpTest.php
+ * @author    Daniel Mason <daniel@danielmason.com>
+ * @copyright 2015 Daniel Mason
+ * @license   GPL 3
+ * @see       https://github.com/AyeAyeApi/Formatters
+ * @see       https://github.com/AyeAyeApi/Formatters
  */
 
-namespace AyeAye\Formatter\Tests\Formats;
+namespace AyeAye\Formatter\Tests\Writer;
 
-use AyeAye\Formatter\Formats\Jsonp;
+use AyeAye\Formatter\Writer\Jsonp;
 use AyeAye\Formatter\Tests\TestCase;
 
 /**
- * Class JsonpFormatterTest
- * @package AyeAye\Formatter\Tests
- * @coversDefaultClass \AyeAye\Formatter\Formats\Jsonp
+ * Class JsonpTest
+ * Test the Jsonp Writer
+ * @package AyeAye\Formatter
+ * @see https://github.com/AyeAyeApi/Formatters
+ * @coversDefaultClass \AyeAye\Formatter\Writer\Jsonp
  */
 class JsonpTest extends TestCase
 {
@@ -40,7 +45,7 @@ class JsonpTest extends TestCase
     /**
      * @test
      * @covers ::getHeader
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     * @uses \AyeAye\Formatter\Writer\Jsonp::__construct
      */
     public function testGetHeader()
     {
@@ -60,7 +65,7 @@ class JsonpTest extends TestCase
     /**
      * @test
      * @covers ::getFooter
-     * @uses \AyeAye\Formatter\Formats\Jsonp::__construct
+     * @uses \AyeAye\Formatter\Writer\Jsonp::__construct
      */
     public function testGetFooter()
     {
