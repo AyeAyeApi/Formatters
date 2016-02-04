@@ -46,7 +46,7 @@ class AyeAyeSerializableClass implements Serializable, Deserializable
      * @param $data
      * @return static
      */
-    public static function ayeAyeDeserialize($data)
+    public function ayeAyeDeserialize($data)
     {
         if (!is_array($data)) {
             throw new \InvalidArgumentException('$data must be an array');
