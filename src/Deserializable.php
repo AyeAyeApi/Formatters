@@ -23,5 +23,5 @@ interface Deserializable
      * @param mixed $data
      * @return static
      */
-    public static function ayeAyeDeserialize($data);
+    public function ayeAyeDeserialize($data);
 }
