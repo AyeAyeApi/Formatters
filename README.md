@@ -12,6 +12,14 @@
 Aye Aye Formatters are a tool that to streamline the conversion of PHP data (arrays or objects) into serialised data
 formats, such as JSON or XML. Other formats can be easily added by extending the Formatter abstract.
 
+## Installation
+
+The best way to install Aye Aye Formatters is with composer
+
+```bash
+composer require="ayeaye/formatters ^1.0.0" -n
+```
+
 ## Formatting Data
 
 To format data into any specific serialised data format, just instantiate the formatter and pass it the data.
