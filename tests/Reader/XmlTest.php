@@ -7,7 +7,6 @@
  * @see       https://github.com/AyeAyeApi/Formatters
  */
 
-
 namespace AyeAye\Formatter\Tests\Reader;
 
 use AyeAye\Formatter\Reader\Xml as XmlReader;
