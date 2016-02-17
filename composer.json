@@ -4,7 +4,7 @@
     "description": "Serialise PHP objects into other types of object (json, xml, etc)",
     "homepage": "http://ayeayeapi.com",
     "minimum-stability": "stable",
-    "license" : "GPL-3.0+",
+    "license" : "MIT",
     "authors": [
         {
             "name": "Daniel Mason",

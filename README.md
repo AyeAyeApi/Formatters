@@ -3,7 +3,7 @@
 Aye Aye Formatters are a tool that to streamline the conversion of PHP data (arrays or objects) into serialised data
 formats, such as JSON or XML. Other formats can be easily added by extending the Formatter abstract.
 
-**License**: [GPL-3.0+](https://www.gnu.org/copyleft/gpl.html)
+**License**: [MIT](https://opensource.org/licenses/MIT)
 
 Development Build Status:
 

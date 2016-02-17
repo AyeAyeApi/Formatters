@@ -3,7 +3,7 @@
  * Jsonp.php
  * @author    Daniel Mason <daniel@danielmason.com>
  * @copyright 2015 Daniel Mason
- * @license   GPL 3
+ * @license   MIT
  * @see       https://github.com/AyeAyeApi/Formatters
  */
 
