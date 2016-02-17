@@ -1,9 +1,9 @@
 <?php
 /**
  * Jsonp.php
- * @author    Daniel Mason <daniel@danielmason.com>
- * @copyright 2015 Daniel Mason
- * @license   GPL 3
+ * @author    Daniel Mason <daniel@ayeayeapi.com>
+ * @copyright 2015 - 2016 Daniel Mason <daniel@ayeayeapi.com>
+ * @license   MIT
  * @see       https://github.com/AyeAyeApi/Formatters
  */
 
@@ -39,7 +39,6 @@ class Jsonp extends Json
     public function __construct($callbackName = null)
     {
         if ($callbackName) {
-            // TODO: Test name
             $this->callbackName = $callbackName;
         }
     }
