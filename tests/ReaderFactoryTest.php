@@ -95,18 +95,6 @@ class ReaderFactoryTest extends TestCase
 
     /**
      * @test
-     * @covers ::addReader
-     * @uses \AyeAye\Formatter\ReaderFactory::__construct
-     * @expectedException \PHPUnit_Framework_Error
-     */
-    public function testAddReaderFail()
-    {
-        $readerFactory = new ReaderFactory();
-        $readerFactory->addReader(new \stdClass());
-    }
-
-    /**
-     * @test
      * @covers ::read
      * @uses \AyeAye\Formatter\ReaderFactory::__construct
      * @uses \AyeAye\Formatter\ReaderFactory::addReader
