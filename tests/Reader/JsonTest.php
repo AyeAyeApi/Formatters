@@ -1,8 +1,8 @@
 <?php
 /**
  * JsonTest.php
- * @author    Daniel Mason <daniel@danielmason.com>
- * @copyright 2015 Daniel Mason
+ * @author    Daniel Mason <daniel@ayeayeapi.com>
+ * @copyright 2015 - 2016 Daniel Mason <daniel@ayeayeapi.com>
  * @license   MIT
  * @see       https://github.com/AyeAyeApi/Formatters
  */
