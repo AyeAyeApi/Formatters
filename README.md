@@ -1,15 +1,16 @@
 # Aye Aye Formatters
 
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg)]
+(https://php.net/)
+[![License](https://img.shields.io/packagist/l/ayeaye/formatters.svg)]
+(https://raw.githubusercontent.com/AyeAyeApi/Formatters/master/LICENSE.txt)
+[![Version](https://img.shields.io/packagist/vpre/ayeaye/formatters.svg)]
+(https://packagist.org/packages/ayeaye/formatters)
+[![Build Status](https://img.shields.io/travis/AyeAyeApi/Formatters/master.svg)]
+(https://travis-ci.org/AyeAyeApi/Formatters/branches)
+
 Aye Aye Formatters are a tool that to streamline the conversion of PHP data (arrays or objects) into serialised data
 formats, such as JSON or XML. Other formats can be easily added by extending the Formatter abstract.
-
-**License**: [MIT](https://opensource.org/licenses/MIT)
-
-Development Build Status:
-
-Travis CI: [![Build Status](https://travis-ci.org/AyeAyeApi/Formatters.svg?branch=master)]
- (https://travis-ci.org/AyeAyeApi/Formatters)
- [Report](https://travis-ci.org/AyeAyeApi/Formatters)
 
 ## Formatting Data
 
