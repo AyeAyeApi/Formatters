@@ -16,6 +16,7 @@ sudo: false
 
 before_script:
   travis_retry composer install
+  travis_retry composer self-update
 
 script:
   composer test
