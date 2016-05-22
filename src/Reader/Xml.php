@@ -30,7 +30,7 @@ class Xml implements Reader
     {
         try {
             $wasUsingErrors = libxml_use_internal_errors();
-            $xmlObject = simplexml_load_string($string);
+            @$xmlObject = simplexml_load_string($string);
             libxml_use_internal_errors($wasUsingErrors);
             if ($xmlObject) {
                 return $this->recurseToArray($xmlObject);
